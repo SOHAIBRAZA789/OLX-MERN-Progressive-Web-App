@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Header from '../header/header';
 
+import {Category,Footer} from '../../components';
+import {Navigation} from '../';
 
-class Home extends Component {
+class Dashboard extends Component {
     constructor() {
         super();
         this.state = { users: [] };
@@ -27,15 +28,18 @@ class Home extends Component {
     render() {
         return (
             <div >
-                <Header/> 
+                
                 <h1>HI Users</h1>
                 {this.state.users.map(user =>
                     <div key={user.id}>user: {user.name} Password: {user.password}</div>
                 )}
+
+                <Category/>
+                <Footer/>
             </div>
         );
     }
 }
 
-export default Home;
+export default Dashboard;
 

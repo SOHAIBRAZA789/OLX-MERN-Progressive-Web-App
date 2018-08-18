@@ -6,7 +6,8 @@ import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
 import purple from '@material-ui/core/colors/purple';
-import './header.css'
+import {AdSearch} from '../../components'; 
+import './Navigation.css'
 
 const theme = createMuiTheme({
     palette: {
@@ -40,7 +41,7 @@ const styles = theme => ({
 });
 
 
-const Header=(props)=> {
+const Navigation=(props)=> {
     const { classes } = props;
     return (
         <MuiThemeProvider theme={theme}>
@@ -48,7 +49,7 @@ const Header=(props)=> {
                 <Toolbar>
 
                     <Typography variant="title" color="default" noWrap className={classes.toolbarTitle}>
-                        <Link to="/">OLX PAKISTAN</Link>
+                        <Link to="/"><img src="./images/olx.png" /></Link>
                     </Typography>
                     <Link to="/account">
                         <Button>My Account</Button>
@@ -60,14 +61,14 @@ const Header=(props)=> {
                     </Link>
                 </Toolbar>
             </AppBar>
+            <AdSearch/>
         </MuiThemeProvider>)
 };
 
 // export default Header;
 
-Header.propTypes = {
+Navigation.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Header);
-
+export default withStyles(styles)(Navigation);
