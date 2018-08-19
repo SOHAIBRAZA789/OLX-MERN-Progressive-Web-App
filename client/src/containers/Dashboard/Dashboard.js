@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-
-import {Category,Footer} from '../../components';
+import React, { Component, Fragment } from 'react';
+import './Dashboard.css';
+import {Category,Footer,LatestProduct} from '../../components';
 import {Navigation} from '../';
 
 class Dashboard extends Component {
@@ -27,7 +27,8 @@ class Dashboard extends Component {
     }
     render() {
         return (
-            <div >
+            <Fragment>
+            <div className="layout">
                 
                 <h1>HI Users</h1>
                 {this.state.users.map(user =>
@@ -35,8 +36,9 @@ class Dashboard extends Component {
                 )}
 
                 <Category/>
-                <Footer/>
             </div>
+            <LatestProduct/>
+            </Fragment>
         );
     }
 }

@@ -4,7 +4,7 @@ import { Router, Route, Switch,IndexRoute } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import { App,Login, Signup, Dashboard,Navigation} from '../containers';
-import {AdPost,PageNotFound} from '../components';
+import {AdPost,PageNotFound,Footer} from '../components';
 
 
 
@@ -20,8 +20,9 @@ const AppRoute =()=>(
     <Route path='/posting' component={AdPost}  />
     <Route component={PageNotFound}/>
     </Switch>   
-   
+    <Footer/>
     </div>
+   
 </Router>
 );
 

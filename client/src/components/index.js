@@ -5,6 +5,7 @@ import Category from './Category/Category';
 import Footer from './Footer/Footer';
 import SubCategory from './Category/SubCategory';
 import PageNotFound from './PageNotFound';
+import LatestProduct from './LatestProduct/LatestProduct';
 
 export {
     AdPost,
@@ -12,6 +13,7 @@ export {
     AdSearch,
     Category,
     Footer,
+    LatestProduct,
     SubCategory,
     PageNotFound
 }

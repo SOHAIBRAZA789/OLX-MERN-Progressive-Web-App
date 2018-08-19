@@ -77,10 +77,10 @@ const Footer = (props)=>{
     const { classes } = props;
 
     return (
-    <Fragment>
+    
     <footer >
-    <Grid container  style={{ textAlign: 'center',marginTop: 50,marginBottom:50  }} justify="space-evenly">
-        {footers.map(footer => (
+    {/* <Grid container > */}
+        {/* {footers.map(footer => (
             <Grid item xs key={footer.title}>
                 <Typography variant="title" color="textPrimary" gutterBottom>
                     {footer.title}
@@ -91,10 +91,10 @@ const Footer = (props)=>{
                     </Typography>
                 ))}
             </Grid>
-        ))}
-        <Grid item sm={12} md={12} xs={12}><img src="./images/footerBanner.png"/></Grid>
-    </Grid>
+        ))} */}
+        {/* <Grid item sm={12} md={12} xs={12}><img src="./images/footerBanner.png"/></Grid> */}
+    {/* </Grid> */}Footer compent in size aproter
 </footer>
-</Fragment>
+
 )}
 export default Footer;
