@@ -20,6 +20,29 @@ app.get('/users', function(req, res, next) {
        password: 'king-arthur'
      }]);
    });
+   
+   
+   //**Ads Route**//
+   app.get('/ads', function(req, res, next) {
+    // res.send('respond with a resource');
+     res.json([{
+       id: 1,
+       description: "3 Bhk Spacious Flat On Jhotwara Road With Lift N Parking",
+       type: 'For Sale',
+       sale: "Home",
+       City:"Faisalabad",
+       Price:"30,0000",
+       Date:"21-AUG-2018"
+     }, {
+      id: 2,
+      description: "Double bedroom flat, next to Lahari school, near",
+      type: 'For Sale',
+      sale: "Apartment",
+      City:"Lahore",
+      Price:"90,0000",
+      Date:"1-SEP-2018"
+     }]);
+   });
 
 // app.get('/',(req,res)=>{
 //     res.send('Hello');
