@@ -1,7 +1,9 @@
 .card{
     display: flex;
   }
-
+  .card:hover{
+    background-color: lightgray;
+}
   .cardDetails {
     flex: 1;
   }
@@ -10,3 +12,4 @@
     height: 8em;
     padding: 1%;
   }
+  

@@ -81,19 +81,20 @@
 
 
 import React, { Component, Fragment } from 'react';
+import {Link} from 'react-router-dom';
 import {
     AppBar, Button, Card, Paper, CardMedia, Collapse,
     CardActions, CardContent, CardHeader, CssBaseline,
     Grid, Toolbar, Typography, Hidden
 } from '@material-ui/core';
-import './Ads.css';
+import './AdsList.css';
 
 
-class Ads extends Component {
+class AdsList extends Component {
     constructor() {
         super();
         this.state = {
-            users: []
+            adsList: []
         };
     }
     componentDidMount() {
@@ -108,43 +109,52 @@ class Ads extends Component {
                 console.log(res);
                 return res.json();
             })
-            .then(users => {
-                console.log(users);
-                this.setState({ users })
+            .then(adsList => {
+                console.log(adsList);
+                this.setState({ adsList })
             });
+            
     }
+   
     render() {
+       
         return (
             <Fragment>
                 <div className="layout">
-
+                    
                     <center><h1>For Rent</h1></center>
                     {
-                        this.state.users.length == 0 ? 'No Ad' : this.state.users.map(user =>
+                        
+
+                        this.state.adsList.length == 0 ? 'No Ad' : this.state.adsList.map(ads =>
+                            
                             // <div key={user.id}>user: {user.name} Password: {user.password}</div>
                             /* Sub featured posts */
                             < Grid container spacing={40} className="cardGrid " >
                                 {
-
-                                    <Grid item key={user.name} xs={12} md={12}>
-                                        <Card className="card">
-                                            <div className="cardDetails">
+                                      
+                                   
+                                    <Grid  item key={ads.name} xs={12} md={12}>
+                                    <Link  to={`/item/${ads.id}`}>
+                                   
+                                        <Card  className="card">
+                                            <div  className="cardDetails">
                                                 <CardContent>
-                                                    <Typography variant="headline">{user.description}</Typography>
+                                                    <Typography variant="headline">{ads.description}</Typography>
                                                     <Typography variant="subheading" color="textSecondary">
-                                                        {user.type}
+                                                        {ads.type}
                                                     </Typography>
                                                     <Typography variant="subheading" paragraph>
-                                                        {user.sale}
+                                                        {ads.sale}
                                                     </Typography>
                                                     <Typography variant="subheading" paragraph>
-                                                        {user.City}
+                                                        {ads.City}
                                                     </Typography>
                                                     <Typography variant="subheading" paragraph>
-                                                        {user.Price}
+                                                        {ads.Price}
                                                     </Typography>
                                                     <Typography variant="subheading" paragraph>
-                                                        {user.Date}
+                                                        {ads.Date}
                                                     </Typography>
                                                 </CardContent>
                                             </div>
@@ -157,7 +167,9 @@ class Ads extends Component {
                                             <img className="Adsimages"src="./images/renthome.jpg" />
                                             </Hidden>
                                         </Card>
+                                        </Link>
                                     </Grid>
+                                    
                                 }
                             </Grid>
                             /* End sub featured posts */
@@ -172,5 +184,5 @@ class Ads extends Component {
     }
 }
 
-export default Ads;
+export default AdsList;
 

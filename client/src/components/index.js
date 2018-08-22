@@ -1,16 +1,15 @@
-import Ads from './Ads/Ads';
+import AdDetail from './AdDetail/AdDetail';
+import AdsList from './AdsList/AdsList';
 import AdPost from './AdPost/AdPost';
 import AdShow from './AdShow/AdShow';
 import AdSearch from './AdSearch/AdSearch';
 import Bikes from './Bikes/Bikes';
 import Books from './Books/Books';
-import Buy from './Buy/Buy';
 import Category from './Category/Category';
 import Electronics from './Electronics/Electronics';
 import Footer from './Footer/Footer';
 import Fashion from './Fashion/Fashion';
 import Furniture from './Furniture/Furniture';
-
 import PageNotFound from './PageNotFound';
 import Page from './Page/Page';
 import Pages from './Pages/Pages';
@@ -26,13 +25,13 @@ import Vehicle from './Vehicle/Vehicle';
 
 
 export {
-    Ads,
+    AdDetail,
+    AdsList,
     AdPost,
     AdShow,
     AdSearch,
     Bikes,
     Books,
-    Buy,
     Category,
     Electronics,
     Fashion,

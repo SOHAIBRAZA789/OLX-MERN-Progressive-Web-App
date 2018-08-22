@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class Buy extends Component {
+class AdDetail extends Component {
     state = {
         ad: {
             name: 'My Ad Name',
@@ -17,20 +17,20 @@ class Buy extends Component {
             status: 'active'
         }
     }
-    componentDidMount() {
-        // console.log(JSON.parse(this.props.location.name))
-        let ad;
-        if (this.props.location.name) {
-            ad = JSON.parse(this.props.location.name)
-            localStorage.setItem('ad', this.props.location.name)
-        } else {
-            ad = JSON.parse(localStorage.getItem('ad'))
-        }
-        this.setState({
-            ad
-        })
+    // componentDidMount() {
+    //     console.log(JSON.parse(this.props.location.name))
+    //     let ad;
+    //     if (this.props.location.name) {
+    //         ad = JSON.parse(this.props.location.name)
+    //         localStorage.setItem('ad', this.props.location.name)
+    //     } else {
+    //         ad = JSON.parse(localStorage.getItem('ad'))
+    //     }
+    //     this.setState({
+    //         ad
+    //     })
 
-    }
+    // }
     render() {
         return (
             <div className="container-fluid">
@@ -61,4 +61,12 @@ class Buy extends Component {
 }
 
 
-export default Buy;
+
+// const AdDetail = () => (
+//     <div>
+       
+//         <h1> AdDetail Ad Pages </h1>
+//     </div>
+// );
+
+export default AdDetail ;

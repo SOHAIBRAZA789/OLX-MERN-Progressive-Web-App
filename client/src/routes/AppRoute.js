@@ -4,7 +4,7 @@ import { Router, Route, Switch,IndexRoute } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 import { App,Login, Signup, Dashboard,Navigation} from '../containers';
 import {AdPost,PageNotFound,Footer,Pages,Property,Vehicle,Electronics,
-        Furniture,Jobs,Mobiles,Bikes,Books,Fashion,Pets,Service,Ads,Buy
+        Furniture,Jobs,Mobiles,Bikes,Books,Fashion,Pets,Service,AdsList,AdDetail
         } from '../components';
 
 
@@ -30,9 +30,8 @@ const AppRoute =()=>(
     <Route path='/fashion' component={Fashion}  />
     <Route path='/pets' component={Pets}  />
     <Route path='/service' component={Service}  />
-    
-    <Route path='/:rent' component={Ads}    />
-    <Route path='/:catogary/:subcatogary/ads/buy' component={Buy}  />
+    <Route path='/:rent' component={AdsList} exact={true}  />
+    <Route path='/:item/:id' component={AdDetail}   />
     
     <Route component={PageNotFound}/>
     </Switch>   
