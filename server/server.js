@@ -27,7 +27,7 @@ app.get('/users', function(req, res, next) {
     // res.send('respond with a resource');
      res.json([{
        id: 1,
-       description: "3 Bhk Spacious Flat On Jhotwara Road With Lift N Parking",
+       description: "4 Bhk Spacious Flat On Jhotwara Road With Lift N Parking",
        type: 'For Sale',
        sale: "Home",
        City:"Faisalabad",

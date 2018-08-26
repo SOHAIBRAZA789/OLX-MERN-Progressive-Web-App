@@ -82,41 +82,47 @@
 
 import React, { Component, Fragment } from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {getAds} from '../../store/actions/adsAction';
 import {
     AppBar, Button, Card, Paper, CardMedia, Collapse,
     CardActions, CardContent, CardHeader, CssBaseline,
     Grid, Toolbar, Typography, Hidden
 } from '@material-ui/core';
 import './AdsList.css';
+import { stat } from 'fs';
 
 
 class AdsList extends Component {
-    constructor() {
-        super();
-        this.state = {
-            adsList: []
-        };
-    }
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         adsList: []
+    //     };
+    // }
     componentDidMount() {
         console.log('Testing getData Function');
-        fetch('/ads', {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        })
-            .then(res => {
-                console.log(res);
-                return res.json();
-            })
-            .then(adsList => {
-                console.log(adsList);
-                this.setState({ adsList })
-            });
+        this.props.getAds();
+       
+        // fetch('/ads', {
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Accept': 'application/json'
+        //     }
+        // })
+        //     .then(res => {
+        //         console.log(res);
+        //         return res.json();
+        //     })
+        //     .then(adsList => {
+        //         console.log(adsList);
+        //         this.setState({ adsList })
+        //     });
             
     }
    
     render() {
+       const {ads}=this.props.ads;
        
         return (
             <Fragment>
@@ -126,7 +132,7 @@ class AdsList extends Component {
                     {
                         
 
-                        this.state.adsList.length == 0 ? 'No Ad' : this.state.adsList.map(ads =>
+                        ads.length == 0 ? 'No Ad' : ads.map(ads =>
                             
                             // <div key={user.id}>user: {user.name} Password: {user.password}</div>
                             /* Sub featured posts */
@@ -184,5 +190,9 @@ class AdsList extends Component {
     }
 }
 
-export default AdsList;
+const mapStateToProps = (state)=>({
+    ads : state.ads  // ads from Index of Reducer file
+});
+
+export default connect(mapStateToProps,{ getAds })(AdsList);
 

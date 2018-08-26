@@ -1,5 +1,7 @@
 import React from 'react';
-import Naigation from '../Navigation/Navigation'
+import { Provider } from 'react-redux';
+import store from '../../store';
+
 //import logo from './logo.svg';
 import './App.css';
 import AppRoute from '../../routes/AppRoute';
@@ -7,10 +9,10 @@ import AppRoute from '../../routes/AppRoute';
 
 const App = () => (
   <div>
-    {/* <Naigation/> */}
-    <AppRoute/>
-    
-  {/* <h1> Home Page </h1> */}
+    <Provider store={store}>
+      <AppRoute />
+    </Provider>
+
   </div>
 );
 export default App;
