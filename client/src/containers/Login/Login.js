@@ -1,70 +1,52 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import LockIcon from '@material-ui/icons/LockOutlined';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import withStyles from '@material-ui/core/styles/withStyles';
+import { Link, withRouter } from "react-router-dom";
+
+import './Login.css';
 
 
-const Login = () => (
-    <div>
-        
-        <h1> Login Pages </h1>
-        
-    </div>
-);
+function Login(props) {
+    const { classes } = props;
+    return (
+        <React.Fragment>
+            <Paper className="heroContent Login_Form" >
+                <Avatar >
+                    <LockIcon />
+                </Avatar>
+                <Typography variant="headline">Sign in</Typography>
+                <form >
+                    <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="email">Email Address</InputLabel>
+                        <Input id="username" name="username" autoComplete="email" autoFocus />
+                    </FormControl>
+                    <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="password">Password</InputLabel>
+                        <Input name="password" type="password" id="password" autoComplete="current-password" />
+                    </FormControl>
+                    <Button type="submit" fullWidth variant="raised" color="primary">
+                        Sign in
+            </Button>
+                </form>
+                <Link to="signup">
+                    <Typography variant="paragraph">Create New Account</Typography>
+                </Link>
 
- export default Login;
+            </Paper>
 
-// import React from "react";
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-// const Account = () => (
-//   <Router>
-//     <div>
-//       <ul>
-       
-//         <li>
-//           <Link to="/topics">Topics</Link>
-//         </li>
-//       </ul>
-
-//       <hr />
-
-//       {/* <Route exact path="/" component={Home} />
-//       <Route path="/about" component={About} /> */}
-//       <Route path="/topics" component={Topics} />
-//     </div>
-//   </Router>
-// );
-
-
+        </React.Fragment>
+    );
+}
 
 
-// const Account = ({ match }) => (
-//   <div>
-//     <h2>Topics</h2>
-//     <ul>
-//       <li>
-//         <Link to={`${match.url}/categories`}>Sub Catagoris with React</Link>
-//       </li>
-//       <li>
-//         <Link to={`${match.url}/components`}>Components</Link>
-//       </li>
-//       <li>
-//         <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
-//       </li>
-//     </ul>
-//     {/* <Route path="/topic" component={Topic} /> */}
-//     <Route path={`${match.url}/:topicId`} component={Topic} />
-//     <Route
-//       exact
-//       path={match.url}
-//       render={() => <h3>Please select a topic.</h3>}
-      
-//     />
-//   </div>
-// );
 
-// const Topic = ({ match }) => (
-//   <div>
-//     <h3>{match.params.topicId}</h3>
-//   </div>
-// );
-
-// export default Account;
+export default Login;

@@ -17,7 +17,7 @@ const AppRoute =()=>(
     <Navigation/>
     <Switch>
     <Route path='/' component={Dashboard} exact={true} />
-    <Route path='/account' component={Login}  />
+    <Route path='/login' component={Login}  />
     <Route path='/posting' component={AdPost}  />
     <Route path='/property' component={Property}  />
     <Route path='/vehicle' component={Vehicle}  />
@@ -30,10 +30,11 @@ const AppRoute =()=>(
     <Route path='/fashion' component={Fashion}  />
     <Route path='/pets' component={Pets}  />
     <Route path='/service' component={Service}  />
+    <Route path='/signup' component={Signup}  />
     <Route path='/:rent' component={AdsList} exact={true}  />
-    <Route path='/:item/:id' component={AdDetail}   />
+    <Route path='/:item/:id' component={AdDetail}  exact={true} />
     
-    <Route component={PageNotFound}/>
+    <Route component={PageNotFound} />
     </Switch>   
     <Footer/>
     </div>

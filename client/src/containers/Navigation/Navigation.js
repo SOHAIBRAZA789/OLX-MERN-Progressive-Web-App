@@ -130,7 +130,7 @@ const Navigation = (props) => {
                         </Grid>
                         <Grid item xs={6} sm={10} md={6} >
                             <Grid className="NavMenu">
-                                <Link to="/account">
+                                <Link to="/login">
                                     <Button>My Account</Button>
                                 </Link>
                                 <Link to="/posting">
