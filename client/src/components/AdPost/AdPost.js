@@ -20,6 +20,8 @@ import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import { Link, withRouter } from "react-router-dom";
 
 const styles = theme => ({
@@ -141,16 +143,42 @@ class SignUp extends React.Component {
                                         onChange={this.handleChange("title")}
                                     />
                                 </FormControl>
-                                <FormControl fullWidth className={classes.margin}>
+                                {/* <FormControl fullWidth className={classes.margin}>
                                     <InputLabel htmlFor="adornment-password">
                                         Category
-                  </InputLabel>
+                                    </InputLabel>
                                     <Input
                                         id="category"
                                         type="text"
                                         value={this.state.category}
                                         onChange={this.handleChange("category")}
                                     />
+                                </FormControl> */}
+                                <FormControl fullWidth className={classes.margin}>
+                                    <InputLabel htmlFor="age-simple">Category</InputLabel>
+                                    <Select
+                                        value={this.state.category}
+                                        onChange={this.handleChange("category")}
+                                        inputProps={{
+                                            name: 'category',
+                                            id: 'category',
+                                        }}
+                                    >
+                                        <MenuItem value="">
+                                            <em>None</em>
+                                        </MenuItem>
+                                        <MenuItem value="/property">Property</MenuItem>
+                                        <MenuItem value="/vehicle">Vehicle</MenuItem>
+                                        <MenuItem value="/electronics">Electronics</MenuItem>
+                                        <MenuItem value="/furniture">Furniture</MenuItem>
+                                        <MenuItem value="/jobs">Jobs</MenuItem>
+                                        <MenuItem value="/mobiles">Mobiles</MenuItem>
+                                        <MenuItem value="/bikes">Bikes</MenuItem>
+                                        <MenuItem value="/books">Books</MenuItem>
+                                        <MenuItem value="/fashion">Fashion</MenuItem>
+                                        <MenuItem value="/pets">Pets</MenuItem>
+                                        <MenuItem value="/service">Services</MenuItem>
+                                    </Select>
                                 </FormControl>
                                 <FormControl fullWidth className={classes.margin}>
                                     <InputLabel htmlFor="adornment-password">

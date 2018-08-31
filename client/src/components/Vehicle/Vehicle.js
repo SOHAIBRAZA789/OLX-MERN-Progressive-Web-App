@@ -218,7 +218,7 @@ class Vehicle extends Component {
         return (
             <Fragment>
                 <div className="layout">
-                    <center><h1>For Rent</h1></center>
+                    <center><h1>Vehicles</h1></center>
                     {
                        ads.category == this.props.match.path ? 'No Ad' : filteredAds.map(ads =>
                             /* Sub featured posts */
