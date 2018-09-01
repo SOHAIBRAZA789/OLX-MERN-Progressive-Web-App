@@ -6,6 +6,7 @@ const adsReducerDefaultState = {
     loading:false
 }
 const adsReducer = (state = adsReducerDefaultState, action) => {
+    
     switch (action.type) {
         case GET_ADS:
             return {...state,

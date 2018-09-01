@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const {User} = require('../../db/models/userModel')
-const passport = require('../passport')
+// const passport = require('../../passport/index');
 
 
 // this route is just used to get the user basic info
@@ -16,41 +16,51 @@ router.get('/user', (req, res, next) => {
 })
 
 // Login Form POST
-router.post(
-	'/login',
-	(req, res, next)=> {
-		console.log(req.body)
-		console.log('================')
-		next()
-	},
-	passport.authenticate('local'),
-	(req, res) => {
-		console.log('POST to /login')
-		const user = JSON.parse(JSON.stringify(req.user)) // hack
-		const cleanUser = Object.assign({}, user)
-		if (cleanUser.local) {
-			console.log(`Deleting ${cleanUser.local.password}`)
-			delete cleanUser.local.password
-		}
-		res.json({ user: cleanUser })
-	}
-)
+// router.post(
+// 	'/login',
+// 	(req, res, next)=> {
+// 		console.log(req.body)
+// 		console.log('================')
+// 		next()
+// 	},
+// 	passport.authenticate('local'),
+// 	(req, res) => {
+// 		console.log('POST to /login')
+// 		const user = JSON.parse(JSON.stringify(req.username)) // hack
+// 		const cleanUser = Object.assign({}, user)
+// 		if (cleanUser.local) {
+// 			console.log(`Deleting ${cleanUser.password}`)
+// 			delete cleanUser.password
+// 		}
+// 		res.json({ user: cleanUser })
+// 	}
+// )
+router.post('/login', (req, res, next) => {
+	console.log(req.body);
+	// passport.authenticate('local', {
+	//   successRedirect:'/posting',
+	//   failureRedirect: '/users/login',
+	//   failureFlash: true
+	// })(req, res, next);
+  });
 
 
 
 // SignUp Form POST
 router.post('/signup', (req, res) => {
-	const { username, password } = req.body
+	console.log(req.body);
+	const { username, password,email } = req.body
 	// ADD VALIDATION
-	User.findOne({ 'local.username': username }, (err, userMatch) => {
+	User.findOne({ 'username': username }, (err, userMatch) => {
 		if (userMatch) {
 			return res.json({
 				error: `Sorry, already a user with the username: ${username}`
 			})
 		}
 		const newUser = new User({
-			'local.username': username,
-			'local.password': password
+			'username': username,
+			'password': password,
+			'email':email
 		})
 		newUser.save((err, savedUser) => {
 			if (err) return res.json(err)

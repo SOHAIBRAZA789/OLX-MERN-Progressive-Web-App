@@ -1,15 +1,17 @@
 import { GET_ADS, ADD_AD, DELETE_AD,ADS_LOADING } from '../actions/types';
 
 //SET_EXPENSES
-export const getAds = () =>dispatch=> {
+export const getAds = (category) =>dispatch=> {
     dispatch(setAdsLoading());
-    fetch('/api/ads', {
+    fetch('/api/ads/category/'+category, {
+          // body: {category:category},
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
         })
             .then(res => {
+         
                 console.log(res);
                 return res.json();
             })

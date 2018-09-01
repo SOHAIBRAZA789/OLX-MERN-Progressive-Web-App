@@ -1,14 +1,31 @@
 const express = require('express');
 const router = express.Router();
+var multer  = require('multer');
+
 
 // Ad Model
 const { AdModel } = require('../../db/models/adModel');
 
+// ** Code for Upload Image from Form **//
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'client/build/static/media/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, `${Date.now()}-${file.originalname}`)
+      }
+  });
+
+  const upload = multer({ storage });
+
+
 // @route   GET api/ads
 // @desc    Get All Ads
 // @access  Public
-router.get('/', (req, res) => {
-    AdModel.find()
+router.get('/category/:category', (req, res) => {
+    console.log(req.params.category);
+    console.log('my cate')
+    AdModel.find({category:req.params.category})
         .sort({ date: -1 })
         .then(ads => res.json(ads));
 });
@@ -16,7 +33,11 @@ router.get('/', (req, res) => {
 // @route   POST api/ads
 // @desc    Creat A Post
 // @access  Public
-router.post('/', (req, res) => {
+router.post('/',upload.single("file"), (req, res) => {
+    let file = req.file.path;
+
+    console.log(file)
+    
     const newAd = new AdModel({
         name : req.body.name,
         title: req.body.title,
@@ -27,6 +48,7 @@ router.post('/', (req, res) => {
         city: req.body.city,
         email: req.body.email,
         phone: req.body.phone,
+        file : file
         
     });
 

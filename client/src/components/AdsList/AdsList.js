@@ -93,68 +93,34 @@ import './AdsList.css';
 import { stat } from 'fs';
 
 
-class AdsList extends Component {
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         adsList: []
-    //     };
-    // }
-    componentDidMount() {
-        console.log('Testing getData Function');
-        this.props.getAds();
-
-        // fetch('/ads', {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Accept': 'application/json'
-        //     }
-        // })
-        //     .then(res => {
-        //         console.log(res);
-        //         return res.json();
-        //     })
-        //     .then(adsList => {
-        //         console.log(adsList);
-        //         this.setState({ adsList })
-        //     });
-
-    }
-
-    render() {
-        const { ads } = this.props.ads;
-        return (
-            <Fragment>
-                <div className="layout">
-                    <center><h1>For Rent</h1></center>
-                    {
-                        ads.length == 0 ? 'No Ad' : ads.map(ads =>
+const AdsList =({_id,title,category,description,city,price,phone,created_date})=>(
+    
                             /* Sub featured posts */
-                            < Grid container spacing={40} className="cardGrid " >
+                            < Grid  container spacing={40} className="cardGrid " >
                                 {
-                                    <Grid item key={ads.name} xs={12} md={12}>
-                                        <Link to={`/item/${ads._id}`}>
+                                    <Grid item  xs={12} md={12}>
+                                        <Link to={`/item/${_id}`}>
                                             <Card className="card">
                                                 <div className="cardDetails">
                                                     <CardContent>
-                                                        <Typography variant="headline">{ads.title}</Typography>
+                                                        <Typography variant="headline">{title}</Typography>
                                                         <Typography variant="subheading" color="textSecondary">
-                                                            {ads.category}
+                                                            {category}
                                                         </Typography>
                                                         <Typography variant="subheading" paragraph>
-                                                            {ads.description}
+                                                            {description}
                                                         </Typography>
                                                         <Typography variant="subheading" paragraph>
-                                                            {ads.city}
+                                                            {city}
                                                         </Typography>
                                                         <Typography variant="subheading" paragraph>
-                                                            {ads.price}
+                                                            {price}
                                                         </Typography>
                                                         <Typography variant="subheading" paragraph>
-                                                            {ads.phone}
+                                                            {phone}
                                                         </Typography>
                                                         <Typography variant="subheading" paragraph>
-                                                            {ads.created_date}
+                                                            {created_date}
                                                         </Typography>
                                                     </CardContent>
                                                 </div>
@@ -173,20 +139,5 @@ class AdsList extends Component {
                                 }
                             </Grid>
                             /* End sub featured posts */
-                        )
-                    }
-
-
-                </div>
-
-            </Fragment>
-        );
-    }
-}
-
-const mapStateToProps = (state) => ({
-    ads: state.ads  // ads from Index of Reducer file
-});
-
-export default connect(mapStateToProps, { getAds })(AdsList);
-
+                            );
+    export default AdsList;

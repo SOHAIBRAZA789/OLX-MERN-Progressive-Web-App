@@ -22,6 +22,9 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import ReactDropzone from 'react-dropzone'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Link, withRouter } from "react-router-dom";
 
 const styles = theme => ({
@@ -50,7 +53,7 @@ const styles = theme => ({
     }
 });
 
-class SignUp extends React.Component {
+class AdPost extends React.Component {
     state = {
         name: "",
         title: "",
@@ -61,8 +64,31 @@ class SignUp extends React.Component {
         city: "",
         email: "",
         phone: "",
+        files: [],
+        imagePreviewUrl: "",
         error: "",
         showPassword: false
+    };
+    success = () => {
+
+        console.log( "Reached at this point" )
+
+        toast.success("Login Successfully!", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 2000
+        });
+
+    }
+    // onDrop(files) {
+    //     this.setState({
+    //         files
+    //     });
+    // }
+
+    onPreviewDrop = files => {
+        this.setState({
+            files: this.state.files.concat(files)
+        });
     };
 
     handleChange = prop => event => {
@@ -71,6 +97,9 @@ class SignUp extends React.Component {
 
     _handleSubmit = e => {
         e.preventDefault();
+        console.log(this.state);
+        const state = this.state;
+
         if (!this.state.name || !this.state.title || !this.state.category
             || !this.state.description || !this.state.price || !this.state.address
             || !this.state.city || !this.state.email || !this.state.phone) {
@@ -79,29 +108,41 @@ class SignUp extends React.Component {
             });
         }
         else {
-            let data = {
-                name: this.state.name,
-                title: this.state.title,
-                category: this.state.category,
-                description: this.state.description,
-                price: this.state.price,
-                address: this.state.address,
-                city: this.state.city,
-                email: this.state.email,
-                phone: this.state.phone,
-            };
+            // let data = {
+            //     name: this.state.name,
+            //     title: this.state.title,
+            //     category: this.state.category,
+            //     description: this.state.description,
+            //     price: this.state.price,
+            //     address: this.state.address,
+            //     city: this.state.city,
+            //     email: this.state.email,
+            //     phone: this.state.phone,
+            //     file: this.state.files[0]
+            // };
+            var formData = new FormData();
+            formData.append("title", state.title);
+            formData.append("category", state.category);
+            formData.append("description", state.description);
+            formData.append("address", state.address);
+            formData.append("price", state.price);
+            formData.append("name", state.name);
+            formData.append("email", state.email);
+            formData.append("city", state.city);
+            formData.append("phone", state.phone);
+            formData.append("file", state.files[0]);
+
+
             var url = "/api/ads";
 
             fetch(url, {
                 method: "POST", // or 'PUT'
-                body: JSON.stringify(data), // data can be `string` or {object}!
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8"
-                }
+                body: formData, // data can be `string` or {object}!
             })
                 .then(res => res.json())
                 .then(response => {
                     console.log("Success:");
+                    this.success();
                     // this.props.history.push("/login");
                 })
                 .catch(error => console.error("Error:", error));
@@ -118,7 +159,7 @@ class SignUp extends React.Component {
                     <Paper className={classes.paper}>
                         <div className={classes.root}>
                             <h1>Add New Ads</h1>
-                            <form onSubmit={this._handleSubmit}>
+                            <form onSubmit={this._handleSubmit} >
                                 <FormControl fullWidth className={classes.margin}>
                                     <InputLabel htmlFor="adornment-password">
                                         Name
@@ -167,17 +208,17 @@ class SignUp extends React.Component {
                                         <MenuItem value="">
                                             <em>None</em>
                                         </MenuItem>
-                                        <MenuItem value="/property">Property</MenuItem>
-                                        <MenuItem value="/vehicle">Vehicle</MenuItem>
-                                        <MenuItem value="/electronics">Electronics</MenuItem>
-                                        <MenuItem value="/furniture">Furniture</MenuItem>
-                                        <MenuItem value="/jobs">Jobs</MenuItem>
-                                        <MenuItem value="/mobiles">Mobiles</MenuItem>
-                                        <MenuItem value="/bikes">Bikes</MenuItem>
-                                        <MenuItem value="/books">Books</MenuItem>
-                                        <MenuItem value="/fashion">Fashion</MenuItem>
-                                        <MenuItem value="/pets">Pets</MenuItem>
-                                        <MenuItem value="/service">Services</MenuItem>
+                                        <MenuItem value="property">Property</MenuItem>
+                                        <MenuItem value="vehicle">Vehicle</MenuItem>
+                                        <MenuItem value="electronics">Electronics</MenuItem>
+                                        <MenuItem value="furniture">Furniture</MenuItem>
+                                        <MenuItem value="jobs">Jobs</MenuItem>
+                                        <MenuItem value="mobiles">Mobiles</MenuItem>
+                                        <MenuItem value="bikes">Bikes</MenuItem>
+                                        <MenuItem value="books">Books</MenuItem>
+                                        <MenuItem value="fashion">Fashion</MenuItem>
+                                        <MenuItem value="pets">Pets</MenuItem>
+                                        <MenuItem value="service">Services</MenuItem>
                                     </Select>
                                 </FormControl>
                                 <FormControl fullWidth className={classes.margin}>
@@ -244,7 +285,24 @@ class SignUp extends React.Component {
                                         onChange={this.handleChange("phone")}
                                     />
                                 </FormControl>
-
+                                <FormControl
+                                    fullWidth
+                                    className={classNames(classes.margin, classes.textField)}
+                                >
+                                    <ReactDropzone  accept="image/*" onDrop={this.onPreviewDrop}>
+                                        Drop an image, get a preview!
+                                </ReactDropzone>
+                                </FormControl>
+                                {this.state.files.length > 0 && <h3>Previews</h3>}{" "}
+                                {this.state.files.map(file => (
+                                    <img
+                                        src={file.preview}
+                                        key={file.preview}
+                                        alt="Preview"
+                                        width="100px"
+                                        style={{ padding: "20px", marginBottom: "20px" }}
+                                    />
+                                ))}
                                 <Button
                                     variant="contained"
                                     color="primary"
@@ -267,9 +325,9 @@ class SignUp extends React.Component {
     }
 }
 
-SignUp.propTypes = {
+AdPost.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(withRouter(SignUp));
+export default withStyles(styles)(withRouter(AdPost));
 

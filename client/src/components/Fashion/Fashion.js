@@ -41,24 +41,20 @@ class Fashion extends Component {
     
     componentDidMount() {
         console.log('Testing getData Function');
-        this.props.getAds();
+        this.props.getAds('fashion');
     }
 
     render() {
         const { ads } = this.props.ads;
-        const paramsCat = this.props.match.path;
-        console.log(ads);
-        console.log(this.props.match.path);
-        let filteredAds = ads.filter(ad =>{
-            return ad.category === paramsCat;
-        })
-        console.log(filteredAds);
+       
+        
+     
         return (
             <Fragment>
                 <div className="layout">
                     <center><h1>Fashion</h1></center>
                     {
-                       ads.category == this.props.match.path ? 'No Ad' : filteredAds.map(ads =>
+                        ads.length == 0 ? 'No Ad' : ads.map(ads =>
                             /* Sub featured posts */
                             < Grid container spacing={40} className="cardGrid " >
                                 {

@@ -163,51 +163,28 @@ import {
     Grid, Toolbar, Typography, Hidden
 } from '@material-ui/core';
 // import './AdsList.css';
-import { stat } from 'fs';
 
 
 class adsList extends Component {
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         adsList: []
-    //     };
-    // }
-    componentDidMount() {
-        console.log('Testing getData Function');
-        this.props.getAds();
-
-        // fetch('/ads', {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Accept': 'application/json'
-        //     }
-        // })
-        //     .then(res => {
-        //         console.log(res);
-        //         return res.json();
-        //     })
-        //     .then(adsList => {
-        //         console.log(adsList);
-        //         this.setState({ adsList })
-        //     });
-
-    }
+    
 
     render() {
         const { ads } = this.props.ads;
-        const paramsId = this.props.match.params.id;
-        console.log(ads);
-        let filteredAds = ads.filter(ad =>{
-            return ad._id === paramsId;
-        })
+        // const paramsId = this.props.match.params.id;
+        
+        // console.log(this.props.match);
+        // let filteredAds = ads.filter(ad =>{
+        //     return ad._id === paramsId;
+        // })
+        let filteredAds= ads.find((ad) => ad._id === this.props.match.params.id) ;
+        console.log(filteredAds);
         return (
             <Fragment>
                 <div className="layout">
                     <center><h1>Ad Detail</h1></center>
-                    {ads._id == this.props.match.params.id }
+                    {/* {ads._id == this.props.match.params.id } */}
                     {  
-                        ads._id == this.props.match.params.id ? 'No Ad' : filteredAds.map(ads =>
+                        ads._id == this.props.match.params.id ? 'No Ad' : 
                             /* Sub featured posts */
                             < Grid container spacing={40} className="cardGrid " >
                                 {
@@ -216,24 +193,24 @@ class adsList extends Component {
                                             <Card className="card">
                                                 <div className="cardDetails">
                                                     <CardContent>
-                                                        <Typography variant="headline">{ads.title}</Typography>
+                                                        <Typography variant="headline">{ filteredAds.title}</Typography>
                                                         <Typography variant="subheading" color="textSecondary">
-                                                            {ads.category}
+                                                            { filteredAds.category}
                                                         </Typography>
                                                         <Typography variant="subheading" paragraph>
-                                                            {ads.description}
+                                                            { filteredAds.description}
                                                         </Typography>
                                                         <Typography variant="subheading" paragraph>
-                                                            {ads.city}
+                                                            { filteredAds.city}
                                                         </Typography>
                                                         <Typography variant="subheading" paragraph>
-                                                            {ads.price}
+                                                            { filteredAds.price}
                                                         </Typography>
                                                         <Typography variant="subheading" paragraph>
-                                                            {ads.phone}
+                                                            { filteredAds.phone}
                                                         </Typography>
                                                         <Typography variant="subheading" paragraph>
-                                                            {ads.created_date}
+                                                            { filteredAds.created_date}
                                                         </Typography>
                                                     </CardContent>
                                                 </div>
@@ -243,7 +220,7 @@ class adsList extends Component {
                                                     image="./images/house.svg" // eslint-disable-line max-len
                                                     title="Image title"
                                                 /> */}
-                                                    <img className="Adsimages" src="./images/renthome.jpg" />
+                                                    <img className="Adsimages" src={`/${filteredAds.file}`} />
                                                 </Hidden>
                                             </Card>
                                         
@@ -252,7 +229,7 @@ class adsList extends Component {
                                 }
                             </Grid>
                             /* End sub featured posts */
-                        )
+                        
                     }
 
 
@@ -263,8 +240,12 @@ class adsList extends Component {
     }
 }
 
+// const mapStateToProps = (state, props) => ({
+//     expense: state.expenses.find((expense) => expense.id === props.match.params.id)
+// });
+
 const mapStateToProps = (state) => ({
-    ads: state.ads  // ads from Index of Reducer file
+    ads: state.ads // ads from Index of Reducer file
 });
 
 export default connect(mapStateToProps, { getAds })(adsList);

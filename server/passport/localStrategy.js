@@ -3,14 +3,14 @@ const {User} = require('../db/models/userModel');
 
 
 
-const LocalStrategy = new LocalStrategy(
+const LocalStr = new LocalStrategy(
     {
         usernameField: 'username' // not necessary, DEFAULT
     },
     (username, password, done) => {
         // Match user
         User.findOne({
-            'local.username': username
+            'username': username
         })
         .then(user => {
             if (!user) {
@@ -34,4 +34,4 @@ const LocalStrategy = new LocalStrategy(
     }
 );
 
-module.exports = {LocalStrategy}
+module.exports = {LocalStr}

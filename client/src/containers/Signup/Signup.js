@@ -62,11 +62,11 @@ class SignUp extends React.Component {
       });
     } else {
       let data = {
-        name: this.state.name,
+        username: this.state.name,
         email: this.state.email,
         password: this.state.password
       };
-      var url = "https://olx-backend.herokuapp.com/users/register";
+      var url = "/api/users/signup";
 
       fetch(url, {
         method: "POST", // or 'PUT'

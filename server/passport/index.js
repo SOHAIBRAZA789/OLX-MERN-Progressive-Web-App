@@ -1,5 +1,5 @@
 const passport = require('passport')
-const {LocalStrategy} = require('./localStrategy')
+const {LocalStr} = require('./localStrategy')
 const {User} = require('../db/models/userModel');
 
 passport.serializeUser((user, done) => {
@@ -24,7 +24,7 @@ passport.deserializeUser((id, done) => {
 })
 
 // ==== Register Strategies ====
-passport.use(LocalStrategy)
+passport.use(LocalStr)
 
 
 module.exports = passport
