@@ -70,20 +70,12 @@ class AdPost extends React.Component {
         showPassword: false
     };
     success = () => {
-
-        console.log( "Reached at this point" )
-
-        toast.success("Login Successfully!", {
+    toast.success("Login Successfully!", {
             position: toast.POSITION.TOP_RIGHT,
             autoClose: 2000
         });
-
     }
-    // onDrop(files) {
-    //     this.setState({
-    //         files
-    //     });
-    // }
+    
 
     onPreviewDrop = files => {
         this.setState({

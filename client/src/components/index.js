@@ -6,7 +6,8 @@ import AdSearch from './AdSearch/AdSearch';
 import Bikes from './Bikes/Bikes';
 import Books from './Books/Books';
 import Category from './Category/Category';
-import Electronics from './Electronics/Electronics';
+// import Electronics from './Electronics/Electronics';
+import CategoryPage from './CategoryPage/CategoryPage';
 import Footer from './Footer/Footer';
 import Fashion from './Fashion/Fashion';
 import Furniture from './Furniture/Furniture';
@@ -33,7 +34,8 @@ export {
     Bikes,
     Books,
     Category,
-    Electronics,
+    CategoryPage,
+    // Electronics,
     Fashion,
     Footer,
     Furniture,

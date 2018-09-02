@@ -28,17 +28,17 @@ class AdSearch extends React.Component {
                                 <MenuItem  className="m2"value="">
                                     <em>None</em>
                                 </MenuItem>
-                                <Link to="/property"><MenuItem >Properties</MenuItem></Link>
-                                <Link to="/vehicle"><MenuItem >Vehicle</MenuItem></Link>
-                                <Link to="/electronics"><MenuItem >Electronics</MenuItem></Link>
-                                <Link to="/furniture"><MenuItem >Furniture</MenuItem></Link>
-                                <Link to="/jobs"><MenuItem >Jobs</MenuItem></Link>
-                                <Link to="/mobiles"><MenuItem >Mobiles</MenuItem></Link>
-                                <Link to="/bikes"><MenuItem >Bikes</MenuItem></Link>
-                                <Link to="/books"><MenuItem >Books</MenuItem></Link>
-                                <Link to="/fashion"><MenuItem >Fashion</MenuItem></Link>
-                                <Link to="/pets"><MenuItem >Pets</MenuItem></Link>
-                                <Link to="/services"><MenuItem >Services</MenuItem></Link>
+                                <Link to="/category/property"><MenuItem >Properties</MenuItem></Link>
+                                <Link to="/category/vehicle"><MenuItem >Vehicle</MenuItem></Link>
+                                <Link to="/category/electronics"><MenuItem >Electronics</MenuItem></Link>
+                                <Link to="/category/furniture"><MenuItem >Furniture</MenuItem></Link>
+                                <Link to="/category/jobs"><MenuItem >Jobs</MenuItem></Link>
+                                <Link to="/category/mobiles"><MenuItem >Mobiles</MenuItem></Link>
+                                <Link to="/category/bikes"><MenuItem >Bikes</MenuItem></Link>
+                                <Link to="/category/books"><MenuItem >Books</MenuItem></Link>
+                                <Link to="/category/fashion"><MenuItem >Fashion</MenuItem></Link>
+                                <Link to="/category/pets"><MenuItem >Pets</MenuItem></Link>
+                                <Link to="/category/services"><MenuItem >Services</MenuItem></Link>
                                 
                                 
                             </Select>

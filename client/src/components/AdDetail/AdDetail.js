@@ -34,7 +34,7 @@
 //     render() {
 //         return (
 //             <div className="container-fluid">
-               
+
 //                 <div className="mb-3">
 //                     <div className='container-fluid row h-100 justify-content-center align-items-center'>
 //                         <img className="card-img-top" src={this.state.ad.picture} alt="Card image cap" />
@@ -64,7 +64,7 @@
 
 // // const AdDetail = () => (
 // //     <div>
-       
+
 // //         <h1> AdDetail Ad Pages </h1>
 // //     </div>
 // // );
@@ -166,31 +166,31 @@ import {
 
 
 class adsList extends Component {
-    
+
 
     render() {
         const { ads } = this.props.ads;
         // const paramsId = this.props.match.params.id;
-        
+
         // console.log(this.props.match);
         // let filteredAds = ads.filter(ad =>{
         //     return ad._id === paramsId;
         // })
-        let filteredAds= ads.find((ad) => ad._id === this.props.match.params.id) ;
+        let filteredAds = ads.find((ad) => ad._id === this.props.match.params.id);
         console.log(filteredAds);
         return (
             <Fragment>
                 <div className="layout">
                     <center><h1>Ad Detail</h1></center>
                     {/* {ads._id == this.props.match.params.id } */}
-                    {  
-                        ads._id == this.props.match.params.id ? 'No Ad' : 
+                    {
+                        ads._id == this.props.match.params.id ? 'No Ad' :
                             /* Sub featured posts */
                             < Grid container spacing={40} className="cardGrid " >
                                 {
                                     <Grid item key={ads.name} xs={12} md={12}>
-                                        
-                                            <Card className="card">
+
+                                        {/* <Card className="card">
                                                 <div className="cardDetails">
                                                     <CardContent>
                                                         <Typography variant="headline">{ filteredAds.title}</Typography>
@@ -215,21 +215,65 @@ class adsList extends Component {
                                                     </CardContent>
                                                 </div>
                                                 <Hidden xsDown>
-                                                    {/* <CardMedia
-                                                    className="cardMedia"
-                                                    image="./images/house.svg" // eslint-disable-line max-len
+                                                    <CardMedia
+                                                    style={{ width: 251,height: 151}}
+                                                    image={`/static/media/${filteredAds.file}`} // eslint-disable-line max-len
                                                     title="Image title"
-                                                /> */}
-                                                    <img className="Adsimages" src={`/${filteredAds.file}`} />
+                                                />
+                                                    {/* <img className="Adsimages" src={`/${filteredAds.file}`} /> */}
+                                        {/* </Hidden> */}
+                                        {/* //</Card> */}
+                                        <Grid container>
+                                            <Grid item md={8}>
+                                                <Hidden xsDown>
+                                                    <CardMedia
+                                                        style={{ width: '100%', height: 451 }}
+                                                        image={`/static/media/${filteredAds.file}`} // eslint-disable-line max-len
+                                                        title="Image title"
+                                                    />
+
                                                 </Hidden>
-                                            </Card>
-                                        
+                                            </Grid>
+                                            <Grid item md={4}>
+                                                <CardContent>
+                                                    <Typography style={{ backgroundColor: 'gold', padding: '10%' }} variant="title" gutterBottom align="center" >
+                                                        {`Rs. ${filteredAds.price}`}
+                                                    </Typography>
+                                                    <Typography variant="headline" >{filteredAds.title}</Typography>
+                                                    <Typography variant="subheading" color="textSecondary">
+                                                        {filteredAds.category.charAt(0).toUpperCase() + filteredAds.category.slice(1)}
+                                                    </Typography>
+                                                    <Typography variant="subheading" paragraph>
+                                                        {filteredAds.name}
+                                                    </Typography>
+                                                    <Typography variant="subheading" paragraph>
+                                                        {filteredAds.description}
+                                                    </Typography>
+                                                    <Typography variant="subheading" paragraph>
+                                                        {filteredAds.address}
+                                                    </Typography>
+                                                    <Typography variant="subheading" paragraph>
+                                                        {filteredAds.city}
+                                                    </Typography>
+
+                                                    <Typography variant="subheading" paragraph>
+                                                        {filteredAds.phone}
+                                                    </Typography>
+                                                    <Typography variant="subheading" paragraph>
+                                                        {filteredAds.email}
+                                                    </Typography>
+                                                    <Typography variant="subheading" paragraph>
+                                                        {filteredAds.created_date}
+                                                    </Typography>
+                                                </CardContent>
+                                            </Grid>
+                                        </Grid>
                                     </Grid>
 
                                 }
                             </Grid>
-                            /* End sub featured posts */
-                        
+                        /* End sub featured posts */
+
                     }
 
 

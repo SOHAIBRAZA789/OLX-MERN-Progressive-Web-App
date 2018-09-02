@@ -24,7 +24,7 @@ const storage = multer.diskStorage({
 // @access  Public
 router.get('/category/:category', (req, res) => {
     console.log(req.params.category);
-    console.log('my cate')
+   
     AdModel.find({category:req.params.category})
         .sort({ date: -1 })
         .then(ads => res.json(ads));
@@ -34,7 +34,7 @@ router.get('/category/:category', (req, res) => {
 // @desc    Creat A Post
 // @access  Public
 router.post('/',upload.single("file"), (req, res) => {
-    let file = req.file.path;
+    let file = req.file.filename;
 
     console.log(file)
     
