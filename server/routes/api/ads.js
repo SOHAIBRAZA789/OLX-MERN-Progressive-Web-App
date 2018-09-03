@@ -9,7 +9,8 @@ const { AdModel } = require('../../db/models/adModel');
 // ** Code for Upload Image from Form **//
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, 'client/build/static/media/');
+    //   cb(null, 'client/build/static/media/');
+      cb(null, 'client/public/upload/');
     },
     filename: function (req, file, cb) {
         cb(null, `${Date.now()}-${file.originalname}`)

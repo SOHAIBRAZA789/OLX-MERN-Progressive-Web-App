@@ -140,7 +140,8 @@ class AdsList extends React.Component {
                     />
                     <CardMedia
                         className={classes.media}
-                        image={`/static/media/${this.props.file}`}
+                        // image={`/static/media/${this.props.file}`}
+                        image={`/upload/${this.props.file}`}
                         //url("/static/media/1535824444489-1.jpg")
                         // image="/static/images/cards/paella.jpg"
                         title="Contemplative Reptile"

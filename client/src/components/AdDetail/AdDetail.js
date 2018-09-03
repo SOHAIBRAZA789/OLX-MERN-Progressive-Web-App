@@ -224,17 +224,17 @@ class adsList extends Component {
                                         {/* </Hidden> */}
                                         {/* //</Card> */}
                                         <Grid container>
-                                            <Grid item md={8}>
+                                            <Grid item  xs={12} md={8}>
                                                 <Hidden xsDown>
                                                     <CardMedia
-                                                        style={{ width: '100%', height: 451 }}
-                                                        image={`/static/media/${filteredAds.file}`} // eslint-disable-line max-len
+                                                        style={{ width: '100%', height: '100%' }}
+                                                        image={`/upload/${filteredAds.file}`} // eslint-disable-line max-len
                                                         title="Image title"
                                                     />
 
                                                 </Hidden>
                                             </Grid>
-                                            <Grid item md={4}>
+                                            <Grid item xs={12} md={4}>
                                                 <CardContent>
                                                     <Typography style={{ backgroundColor: 'gold', padding: '10%' }} variant="title" gutterBottom align="center" >
                                                         {`Rs. ${filteredAds.price}`}
