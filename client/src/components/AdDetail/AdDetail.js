@@ -178,6 +178,7 @@ class adsList extends Component {
         // })
         let filteredAds = ads.find((ad) => ad._id === this.props.match.params.id);
         console.log(filteredAds);
+        console.log(this.props.match.params.id);
         return (
             <Fragment>
                 <div className="layout">

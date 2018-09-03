@@ -94,7 +94,7 @@ const styles = theme => ({
 
 class Login extends React.Component {
     state = {
-        email: "",
+        username: "",
         password: "",
         
         
@@ -108,18 +108,18 @@ class Login extends React.Component {
 
     _handleSubmit = e => {
         e.preventDefault();
-        if (!this.state.email || !this.state.password ) {
+        if (!this.state.username || !this.state.password ) {
             this.setState({
                 error: "Please fill all the feilds correctly"
             });
         }  else {
             let data = {
                 
-                email: this.state.email,
+                username: this.state.username,
                 password: this.state.password
 
             };
-            console.log(data);
+            // console.log(data);
 
             var url ="/api/users/login";
 
@@ -135,6 +135,7 @@ class Login extends React.Component {
                     console.log("Success:");
                     // this.props.history.push("/posting");
                 })
+                
                 .catch(error => console.error("Error:", error));
         }
     };
@@ -159,10 +160,10 @@ class Login extends React.Component {
                                 <FormControl fullWidth className={classes.margin}>
                                     <InputLabel htmlFor="adornment-password">Email</InputLabel>
                                     <Input
-                                        id="email"
+                                        id="username"
                                         type="email"
-                                        value={this.state.email}
-                                        onChange={this.handleChange("email")}
+                                        value={this.state.username}
+                                        onChange={this.handleChange("username")}
                                     />
                                 </FormControl>
                                 <FormControl
@@ -191,7 +192,7 @@ class Login extends React.Component {
                                 )}
                             </form>
                             <Link to="signup">
-                                <Typography variant="paragraph">Create New Account</Typography>
+                                <Typography >Create New Account</Typography>
                             </Link>
                             {/* </div> */}
                         </Paper>

@@ -17,67 +17,67 @@ const tiers = [
     {
         buttonText: 'Properties',
         buttonImag: './images/house.svg',
-        buttonLink: '/category/property',
+        buttonLink: '/property',
         buttonVariant: 'outlined',
     },
     {
         buttonText: 'Cars',
         buttonImag: './images/car.svg',
-        buttonLink: '/category/vehicle',
+        buttonLink: '/vehicle',
         buttonVariant: 'outlined',
     },
     {
         buttonText: 'Electronics',
         buttonImag: './images/computer.svg',
-        buttonLink: '/category/electronics',
+        buttonLink: '/electronics',
         buttonVariant: 'outlined',
     },
     {
         buttonText: 'Furniture',
         buttonImag: './images/bed.svg',
-        buttonLink: '/category/furniture',
+        buttonLink: '/furniture',
         buttonVariant: 'outlined',
     },
     {
         buttonText: 'Jobs',
         buttonImag: './images/job.svg',
-        buttonLink: '/category/jobs',
+        buttonLink: '/jobs',
         buttonVariant: 'outlined',
     },
     {
         buttonText: 'Mobiles',
         buttonImag: './images/mobile.svg',
-        buttonLink: '/category/mobiles',
+        buttonLink: '/mobiles',
         buttonVariant: 'outlined',
     },
     {
         buttonText: 'Bikes',
         buttonImag: './images/bikes.svg',
-        buttonLink: '/category/bikes',
+        buttonLink: '/bikes',
         buttonVariant: 'outlined',
     },
     {
         buttonText: 'Books,Sports',
         buttonImag: './images/book.svg',
-        buttonLink: '/category/books',
+        buttonLink: '/books',
         buttonVariant: 'outlined',
     },
     {
         buttonText: 'Fashion',
         buttonImag: './images/fashion.svg',
-        buttonLink: '/category/fashion',
+        buttonLink: '/fashion',
         buttonVariant: 'outlined',
     },
     {
         buttonText: 'Pets',
         buttonImag: './images/pet.svg',
-        buttonLink: '/category/pets',
+        buttonLink: '/pets',
         buttonVariant: 'outlined',
     },
     {
         buttonText: 'Services',
         buttonImag: './images/services.svg',
-        buttonLink: '/category/service',
+        buttonLink: '/service',
         buttonVariant: 'outlined',
     },
 
@@ -108,7 +108,7 @@ const Category = () => {
                     // Enterprise card is full width at sm breakpoint
                     <Grid item key={tier.title} xs={6} sm={tier.title === 'Enterprise' ? 12 : 4} md={2}>
                         <Card>
-                            <Link to={`${tier.buttonLink}`}>
+                            <Link to={`/category${tier.buttonLink}`}>
                                 <CardContent align="center" className="CardContent">
                                     <img src={tier.buttonImag} />
                                     <Typography color="textPrimary" gutterBottom>

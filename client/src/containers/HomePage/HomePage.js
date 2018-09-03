@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import './Dashboard.css';
+import './HomePage.css';
 import {Category,Footer,LatestProduct} from '../../components';
 
 
-class Dashboard extends Component {
+class HomePage extends Component {
     constructor() {
         super();
         this.state = { users: [] };
@@ -43,5 +43,5 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+export default HomePage;
 

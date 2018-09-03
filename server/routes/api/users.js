@@ -1,7 +1,54 @@
-const express = require('express')
-const router = express.Router()
-const {User} = require('../../db/models/userModel')
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+var LocalStrategy = require("passport-local").Strategy;
+const {User} = require('../../db/models/userModel');
 // const passport = require('../../passport/index');
+
+
+
+
+
+   
+	passport.use(new LocalStrategy({usernameField:'username'},
+	
+	function (username, password, done) {
+	  
+		User.findOne({ email: username }, function (err, user) {
+			if (err) { return done(err); }
+			if (!user) {
+				return done(null, false, { message: 'Incorrect username.' });
+			}
+			if (user.password !=password){
+				return done(null, false, { message: 'Incorrect password.' });
+			}
+			return done(null, user);
+		});
+	}
+	));
+	
+	passport.serializeUser(function (user, done) {
+	   done(null, user._id);
+	});
+	
+	passport.deserializeUser(function (id, done) {
+	
+		User.findById(id, function (err, user) {
+		done(err, user);
+	});
+	});
+	
+	
+	
+
+
+
+
+
+
+
+
+
 
 
 // this route is just used to get the user basic info
@@ -25,7 +72,7 @@ router.get('/user', (req, res, next) => {
 // 	},
 // 	passport.authenticate('local'),
 // 	(req, res) => {
-// 		console.log('POST to /login')
+// 		console.log('POST to /login',req.body)
 // 		const user = JSON.parse(JSON.stringify(req.username)) // hack
 // 		const cleanUser = Object.assign({}, user)
 // 		if (cleanUser.local) {
@@ -37,11 +84,13 @@ router.get('/user', (req, res, next) => {
 // )
 router.post('/login', (req, res, next) => {
 	console.log(req.body);
-	// passport.authenticate('local', {
-	//   successRedirect:'/posting',
-	//   failureRedirect: '/users/login',
-	//   failureFlash: true
-	// })(req, res, next);
+	console.log('===== user!!======')
+	passport.authenticate('local', {
+	  successRedirect:'/',
+	  failureRedirect: '/login'
+	  
+	})(req, res, next);
+	//  res.send('Login');
   });
 
 
