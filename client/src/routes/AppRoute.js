@@ -21,6 +21,7 @@ const AppRoute =()=>(
     <Route path='/signup' component={Signup}  />
     <Route path='/:rent' component={AdsList} exact={true}  />
     <Route path='/item/:id' component={AdDetail}  exact={true} />
+    
     <Route component={PageNotFound} />
     </Switch>   
     <Footer/>

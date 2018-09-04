@@ -17,13 +17,23 @@ const userSchema = new Schema({
 
 // Define schema methods
 userSchema.methods = {
-    checkPassword: function (inputPassword) {
-        return bcrypt.compareSync(inputPassword, this.password)
-    },
     hashPassword: plainTextPassword => {
         return bcrypt.hashSync(plainTextPassword, 10)
     }
 };
+
+userSchema.methods.checkPassword = function ( password, callback ) {
+
+    var user = this;
+
+    bcrypt.compare(password, user.password, function(err, isValid) {
+        if (err) {
+            callback(err)
+        }
+        callback(null, isValid)
+    })
+
+}
 
 // Define hooks for pre-saving
 userSchema.pre('save', function (next) {
@@ -38,16 +48,5 @@ userSchema.pre('save', function (next) {
 
 var User = mongoose.model('User', userSchema);
 
-// var newUser = new User({
-//     name: 'Sohaib Raza',
-//     email: ' Sohaibraza@gmail.com ',
-//     password: '1234'
-// });
-
-// newUser.save().then((doc) => {
-//     console.log('Save Data', doc);
-// }, (e) => {
-//     console.log('Unable to Save data');
-// });
 
 module.exports = { User };

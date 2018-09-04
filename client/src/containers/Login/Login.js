@@ -96,8 +96,6 @@ class Login extends React.Component {
     state = {
         username: "",
         password: "",
-        
-        
         error: "",
         showPassword: false
     };
@@ -186,7 +184,7 @@ class Login extends React.Component {
                                     type="submit"
                                 >
                                     login
-                </Button>
+                                </Button>
                                 {this.state.error && (
                                     <p style={{ color: "red" }}>{this.state.error}</p>
                                 )}

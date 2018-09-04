@@ -1,71 +1,70 @@
-// const passport = require('passport')
-// const {LocalStr} = require('./localStrategy')
-// const {User} = require('../db/models/userModel');
-
-// passport.serializeUser((user, done) => {
-// 	console.log('=== serialize ... called ===')
-// 	console.log(user) // the whole raw user object!
-// 	console.log('---------')
-// 	done(null, { _id: user._id })
-// })
-
-// passport.deserializeUser((id, done) => {
-// 	console.log('DEserialize ... called')
-// 	User.findOne(
-// 		{ _id: id },
-// 		'firstName lastName photos local.username',
-// 		(err, user) => {
-// 			console.log('======= DESERILAIZE USER CALLED ======')
-// 			console.log(user)
-// 			console.log('--------------')
-// 			done(null, user)
-// 		}
-// 	)
-// })
-
-// // ==== Register Strategies ====
-// passport.use(LocalStr)
-
-
-// module.exports = passport
-
-
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 
 const {User} = require('../db/models/userModel');
 
-    
-module.exports = function() {
+passport.use(new LocalStrategy({
 
-   
-passport.use(new LocalStrategy({usernameField:'email'},
-function (email, password, done) {
-  
+    usernameField: 'username',
+    passwordField: 'password',
+    passReqToCallback: true,
+    session: true
+
+}, function (req, email, password, next) {
+
+
+    console.log("It is reached at stage 1")
+
     User.findOne({ email: email }, function (err, user) {
-        if (err) { return done(err); }
-        if (!user) {
-            return done(null, false, { message: 'Incorrect username.' });
+
+        console.log("It is reached at stage 2")
+
+        if (err) { 
+            console.log("we got an error", err)
+            return next(err) 
+        
         }
-        if (user.password !=password){
-            return done(null, false, { message: 'Incorrect password.' });
+        if (!user) { 
+            console.log("we didn't find any user")
+            return next(null, false) 
         }
-        return done(null, user);
-    });
-}
-));
 
-passport.serializeUser(function (user, done) {
-   done(null, user._id);
-});
+        // console.log(user)
+        // next(null, user)
 
-passport.deserializeUser(function (id, done) {
+        user.checkPassword(password, function (err, isValid) {
 
-	User.findById(id, function (err, user) {
-    done(err, user);
-});
-});
+            console.log("It is reached at stage 3")
+
+            if (err) { return next(err) }
+            if (!isValid) { return next(null, false) }
+
+            return next(null, user);
+
+        })
+
+    })
+
+}))
+
+passport.serializeUser(function (user, next) {
+
+    console.log("It is reached at stage 4")
+
+    next(null, user._id)
+
+})
+
+passport.deserializeUser(function (userId, next) {
+    
+    console.log("It is reached at stage 5")
 
 
-};
- 
+    User.findOne({ _id: userId }).exec( function (err, user) {
+        if (err) { return next(err); }
+        if (!user) { return next(null, false); }
+        return next(null, user);
+    } )
+
+})
+    
