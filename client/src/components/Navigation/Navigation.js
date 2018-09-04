@@ -13,7 +13,7 @@ import './Navigation.css'
 
 
 const Navigation = (props) => {
-    const { classes } = props;
+    // const { classes } = props;
     return (
         <div>
             <AppBar position="static" color="default" >
@@ -26,6 +26,8 @@ const Navigation = (props) => {
                         </Grid>
                         <Grid item xs={6} sm={10} md={6} >
                             <Grid className="NavMenu">
+                            
+
                                 <Link to="/login">
                                     <Button>My Account</Button>
                                 </Link>

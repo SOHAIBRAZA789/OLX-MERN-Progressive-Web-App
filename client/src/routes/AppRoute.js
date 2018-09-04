@@ -3,7 +3,8 @@ import { Router, Route, Switch} from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 import { Dashbord,Login, Signup, HomePage,CategoryPage} from '../containers';
 import {AdPost,PageNotFound,Footer,AdsList,AdDetail,Navigation} from '../components';
-
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 
 const history = createBrowserHistory();
@@ -13,14 +14,15 @@ const AppRoute =()=>(
     <div>
     <Navigation/>
     <Switch>
-    <Route path='/' component={HomePage} exact={true} />
-    <Route path='/dashbord' component={Dashbord}  />
-    <Route path='/login' component={Login}  />
-    <Route path='/posting' component={AdPost}  />
-    <Route path='/category/:category' component={CategoryPage} exact={true} />
-    <Route path='/signup' component={Signup}  />
-    <Route path='/:rent' component={AdsList} exact={true}  />
-    <Route path='/item/:id' component={AdDetail}  exact={true} />
+    <PublicRoute path='/' component={HomePage} exact={true} />
+    <PrivateRoute path='/dashbord' component={Dashbord}  />
+    <PublicRoute path='/item/:id' component={AdDetail}   />
+    <PrivateRoute path='/posting' component={AdPost}  />
+    <PublicRoute path='/login' component={Login}  />
+    <PublicRoute path='/category/:category' component={CategoryPage} />
+    <PublicRoute path='/signup' component={Signup}  />
+    <PublicRoute path='/:rent' component={AdsList}   />
+   
     
     <Route component={PageNotFound} />
     </Switch>   
