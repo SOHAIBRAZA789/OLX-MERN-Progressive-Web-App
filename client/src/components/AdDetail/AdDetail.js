@@ -189,7 +189,7 @@ class adsList extends Component {
                             /* Sub featured posts */
                             < Grid container spacing={40} className="cardGrid " >
                                 {
-                                    <Grid item key={ads.name} xs={12} md={12}>
+                                    <Grid item key={ads._id} xs={12} md={12}>
 
                                         {/* <Card className="card">
                                                 <div className="cardDetails">

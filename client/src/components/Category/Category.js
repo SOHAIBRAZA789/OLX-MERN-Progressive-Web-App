@@ -106,7 +106,7 @@ const Category = () => {
             <Grid container spacing={8} className="catagory-grid" alignItems="flex-end">
                 {tiers.map(tier => (
                     // Enterprise card is full width at sm breakpoint
-                    <Grid item key={tier.title} xs={6} sm={tier.title === 'Enterprise' ? 12 : 4} md={2}>
+                    <Grid item  xs={6} sm={tier.title === 'Enterprise' ? 12 : 4} md={2}>
                         <Card>
                             <Link to={`/category${tier.buttonLink}`}>
                                 <CardContent align="center" className="CardContent">

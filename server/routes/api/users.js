@@ -19,10 +19,10 @@ router.get('/user', (req, res, next) => {
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
 	console.log("hitting this route");
 	console.log(req.user);
+	res.json({ user: req.user });
+	// res.send(req.user)
+	
 
-	res.send(req.user)
-
-	//  res.send('Login');
   });
 
 

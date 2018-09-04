@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { Link, withRouter } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 const styles = theme => ({
   root: {
@@ -46,6 +47,20 @@ class SignUp extends React.Component {
     showPassword: false
   };
 
+  success = () => {
+    toast.success("Sigup Successfully!", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 2000
+        });
+    }
+
+  error = () => {
+    toast.error("Invalid Signup!", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 2000
+        });
+    }
+
   handleChange = prop => event => {
     this.setState({ [prop]: event.target.value });
   };
@@ -78,9 +93,13 @@ class SignUp extends React.Component {
         .then(res => res.json())
         .then(response => {
           console.log("Success:");
+          this.success();
           this.props.history.push("/login");
         })
-        .catch(error => console.error("Error:", error));
+        .catch(error =>{
+           console.error("Error:", error);
+           this.error();
+          });
     }
   };
 

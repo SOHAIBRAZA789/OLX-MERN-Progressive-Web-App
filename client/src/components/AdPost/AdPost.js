@@ -70,12 +70,18 @@ class AdPost extends React.Component {
         showPassword: false
     };
     success = () => {
-    toast.success("Login Successfully!", {
+    toast.success("Add Post !", {
             position: toast.POSITION.TOP_RIGHT,
             autoClose: 2000
         });
     }
     
+    error = () => {
+        toast.error("Not Add Post!", {
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 2000
+            });
+        }
 
     onPreviewDrop = files => {
         this.setState({
@@ -137,7 +143,10 @@ class AdPost extends React.Component {
                     this.success();
                     // this.props.history.push("/login");
                 })
-                .catch(error => console.error("Error:", error));
+                .catch(error => {
+                    console.error("Error:", error)
+                    this.error();
+            });
         }
     };
 
