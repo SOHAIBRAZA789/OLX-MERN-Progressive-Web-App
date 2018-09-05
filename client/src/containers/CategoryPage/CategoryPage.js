@@ -17,10 +17,14 @@ class CategoryPage extends Component {
         const { ads } = this.props.ads;
         return (
             <Fragment>
-                <div className="layout">
+                <div className="layou1t">
+                
                 <AdSearch/>
                     <center><h1>{this.props.match.params.category.toUpperCase()}</h1></center>
                     <Grid container spacing={32} >
+                    <Grid item md={1}>
+                    </Grid>
+                    <Grid item md={10}>
                         {
                             ads.length == 0 ? 'No Ad' : ads.map(ads =>
                                 (
@@ -28,6 +32,9 @@ class CategoryPage extends Component {
                                 )
                             )
                         }
+                    </Grid>
+                    <Grid item md={1}>
+                    </Grid>
                     </Grid>
                 </div>
             </Fragment>

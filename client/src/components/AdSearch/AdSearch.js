@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button, Grid, TextField } from '@material-ui/core';
 import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import SearchIcon from '@material-ui/icons/Search';
 import './AdSearch.css';
 
 class AdSearch extends React.Component {
@@ -17,53 +18,57 @@ class AdSearch extends React.Component {
 
 
 
-            <div className="search-bar">
+            <div >
                 {/* <Toolbar> */}
-                <Grid container>
+                <Grid container  align="center">
                     {/* <Grid item xs={12} sm={5} md={5}> <input className="text-input" type="text" namae="Search" placeholder="Search" /></Grid> */}
-                    <Grid item  xs={12} sm={5} md={5}>
-                        <FormControl className="search-selector" >
-                            <InputLabel className="search-label" >Select Category</InputLabel>
-                            <Select className="me1">
-                                <MenuItem  className="m2"value="">
-                                    <em>None</em>
-                                </MenuItem>
-                                <Link to="/category/property"><MenuItem >Properties</MenuItem></Link>
-                                <Link to="/category/vehicle"><MenuItem >Vehicle</MenuItem></Link>
-                                <Link to="/category/electronics"><MenuItem >Electronics</MenuItem></Link>
-                                <Link to="/category/furniture"><MenuItem >Furniture</MenuItem></Link>
-                                <Link to="/category/jobs"><MenuItem >Jobs</MenuItem></Link>
-                                <Link to="/category/mobiles"><MenuItem >Mobiles</MenuItem></Link>
-                                <Link to="/category/bikes"><MenuItem >Bikes</MenuItem></Link>
-                                <Link to="/category/books"><MenuItem >Books</MenuItem></Link>
-                                <Link to="/category/fashion"><MenuItem >Fashion</MenuItem></Link>
-                                <Link to="/category/pets"><MenuItem >Pets</MenuItem></Link>
-                                <Link to="/category/services"><MenuItem >Services</MenuItem></Link>
-                                
-                                
-                            </Select>
-                        </FormControl>
+                    <Grid item md={2}>
                     </Grid>
-                    <Grid item xs={12} sm={2} md={2}> <Button variant="contained" color="primary">Search</Button></Grid>
+
+                    {/* START FORM  */}
+                    <Grid item md={8}>
+                        <Grid  container spacing={16} style={{backgroundColor:'#dcd7d780'}}>
+                            {/* Start CategorySeerch Text */}
+                            <Grid item xs={12} sm={12} md={5}>
+                                <FormControl style={{ minWidth: '100%' }} className='{classes.formControl}'>
+                                    <InputLabel htmlFor="category">Select Category</InputLabel>
+                                    <Select value='{this.state.age}' onChange='{this.handleChange}' 
+                                        inputProps={{
+                                            name: 'category',
+                                            id: 'category',
+                                        }}
+                                    >
+                                        <MenuItem value="">
+                                            <em>None</em>
+                                        </MenuItem>
+                                        <MenuItem value={10}>Ten</MenuItem>
+                                        <MenuItem value={20}>Twenty</MenuItem>
+                                        <MenuItem value={30}>Thirty</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            {/* End Category Seerch Text */}
+                            {/* Start Seerch Text */}
+                            <Grid item xs={12} sm={12} md={5}>
+                                <TextField style={{ minWidth: '100%' }} id="search" label="Search field" type="search" className='{classes.textField}' />
+                            </Grid>
+                            {/* End Seerch Text */}
+                            {/* Start Search Button */}
+                            <Grid item xs={12} sm={12} md={2}>
+                                <Button variant="contained" color="default" style={{ backgroundColor:'#93e84f' ,minWidth: '100%',height:'100%' }}>
+                                    <SearchIcon className='{classes.rightIcon}' />
+                                    Search
+                                </Button>
+                            </Grid>
+                            {/* End Search Button */}
+                        </Grid>
+                    </Grid>
+                    {/* END START FORM  */}
+
+                    <Grid item md={2}>
+                    </Grid>
                 </Grid>
-                {/* <TextField
-                        id="search"
-                        label="Search field"
-                        type="search"
-                        // className={classes.textField}
-                        margin="normal"
-                    />
-                    
-                    <select >
-                        <option value='date'> Date</option>
-                        <option value='amount'> Amount</option>
-                    </select>
 
-                    <Button variant="contained" color="primary" >
-                        Search
-                         </Button> */}
-
-                {/* </Toolbar> */}
             </div>
 
 

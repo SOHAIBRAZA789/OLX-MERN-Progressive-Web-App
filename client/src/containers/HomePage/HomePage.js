@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './HomePage.css';
 import { Category, Footer, LatestProduct, AdSearch } from '../../components';
-
+import { Grid, Typography } from '@material-ui/core';
 
 class HomePage extends Component {
     constructor() {
@@ -12,13 +12,21 @@ class HomePage extends Component {
     render() {
         return (
             <Fragment>
-                <div className="box-layout_HomePage">
-                    <AdSearch />
-                </div>
-                <div className="container">
+                <Grid container className="box-layout_HomePage">
+                    <Grid item md={12} >
+                        <Typography variant="display3" align="center" color="secondary" gutterBottom>
+                            WELCOME TO CLASSIALLY
+                    </Typography>
+                    </Grid>
+                    <Grid item md={12} >
+                        <AdSearch />
+                    </Grid>
+                </Grid>
+                <Grid className="container">
                     <Category />
-                </div>
-                <LatestProduct />
+                    <LatestProduct />
+                </Grid>
+
             </Fragment>
         );
     }

@@ -119,7 +119,8 @@ class AdsList extends React.Component {
         const { classes } = this.props;
 
         return (
-
+            
+            < Grid container>
             < Grid item md={4} >
                 <Card className={classes.card}>
                 <Link to={`/item/${this.props._id}`}>
@@ -170,7 +171,7 @@ class AdsList extends React.Component {
                     </CardActions>
                 </Card>
             </Grid>
-
+            </Grid>
         );
     }
 }
