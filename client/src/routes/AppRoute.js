@@ -14,16 +14,14 @@ const AppRoute =()=>(
     <div>
     <Navigation/>
     <Switch>
-    <PublicRoute path='/' component={HomePage} exact={true} />
-    <PrivateRoute path='/dashbord' component={Dashbord}  />
-    <PublicRoute path='/item/:id' component={AdDetail}   />
-    <PrivateRoute path='/posting' component={AdPost}  />
-    <PublicRoute path='/login' component={Login}  />
-    <PublicRoute path='/category/:category' component={CategoryPage} />
-    <PublicRoute path='/signup' component={Signup}  />
-    <PublicRoute path='/:rent' component={AdsList}   />
-   
-    
+        <PublicRoute path='/' component={HomePage} exact={true} />
+        <PrivateRoute path='/dashbord' exact={true} component={Dashbord}  />
+        <PublicRoute path='/item/:id' exact={true} component={AdDetail}   />
+        <PrivateRoute path='/posting' exact={true} component={AdPost}  />
+        <PublicRoute path='/login' exact={true} component={Login}  />
+        <PublicRoute path='/category/:category' exact={true} component={CategoryPage} />
+        <PublicRoute path='/signup' exact={true} component={Signup}  />
+        {/* <PublicRoute path='/:rent' component={AdsList}   /> */}
     <Route component={PageNotFound} />
     </Switch>   
     <Footer/>

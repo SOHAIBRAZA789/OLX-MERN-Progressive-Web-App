@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { getAds } from '../../store/actions/adsAction';
-import { AdsList } from '../../components/';
+import { AdsList ,AdSearch} from '../../components/';
 import { Grid } from '@material-ui/core';
 
 
@@ -18,6 +18,7 @@ class CategoryPage extends Component {
         return (
             <Fragment>
                 <div className="layout">
+                <AdSearch/>
                     <center><h1>{this.props.match.params.category.toUpperCase()}</h1></center>
                     <Grid container spacing={32} >
                         {

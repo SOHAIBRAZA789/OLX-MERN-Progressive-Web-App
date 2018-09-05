@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 
 
 export const login = (uid) => ({
@@ -31,10 +32,18 @@ export const startLogin = (data) => dispatch => {
             dispatch({
                 type: 'LOGIN',
                 payload: response.user
-            })
+            });
+            toast("Login Successfully!", {
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 2000
+            });
             // this.props.history.push("/dashbord");
         })
         .catch(error => {
+            toast("Invalid User Name and Password!", {
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 2000
+            });
             console.log("Error:", error);
         });
 };

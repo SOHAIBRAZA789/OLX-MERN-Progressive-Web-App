@@ -17,7 +17,7 @@ class Login extends React.Component {
             this.props.dispatch(startLogin(data, this.props.history));
           }}
         />
-        {user.isAuthenticated && <Redirect to="/dashboard" />}
+        {user.isAuthenticated && <Redirect to="/dashbord" />}
       </div>
     );
   }

@@ -5,6 +5,8 @@
 }
 .search-bar{
     padding: 5% 10%;
+    /* background: hsl(220, 93%, 6%) url("/client/public/images/top_banner.jpg") no-repeat fixed 0 0 / cover ; */
+    width: 100vw;
 }
 
 .search-selector{
@@ -15,3 +17,4 @@
 .search-label{
     padding-left: 10px;
 }
+
