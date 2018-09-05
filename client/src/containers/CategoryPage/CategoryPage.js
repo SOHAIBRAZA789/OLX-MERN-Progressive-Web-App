@@ -21,17 +21,19 @@ class CategoryPage extends Component {
                 
                 <AdSearch/>
                     <center><h1>{this.props.match.params.category.toUpperCase()}</h1></center>
-                    <Grid container spacing={32} >
+                    <Grid container  >
                     <Grid item md={1}>
                     </Grid>
                     <Grid item md={10}>
+                    <Grid container spacing={32}>
                         {
-                            ads.length == 0 ? 'No Ad' : ads.map(ads =>
+                            ads.length == 0 ? 'No Ad' : ads.map((ads) =>
                                 (
                                     <AdsList key={ads.id} {...ads} />
                                 )
                             )
                         }
+                        </Grid >
                     </Grid>
                     <Grid item md={1}>
                     </Grid>

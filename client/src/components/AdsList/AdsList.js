@@ -109,8 +109,34 @@ const styles = theme => ({
 });
 
 class AdsList extends React.Component {
-    state = { expanded: false };
+    state = { 
+        expanded: false,
+        favorite: false,
+        productId:''
+     };
 
+
+     componentDidMount() {
+        this.setState(state =>({
+             favorite: !state.favorite,
+             productId: this.props._id
+           }));
+    }
+
+
+
+
+
+     favorite = ()=>{
+         console.log('Favrite');
+         this.setState(state =>({
+             favorite: !state.favorite,
+             productId: this.props._id
+            })
+        );
+         console.log(this.state.favorite);
+         console.log(this.state);
+     }
     handleExpandClick = () => {
         this.setState(state => ({ expanded: !state.expanded }));
     };
@@ -120,7 +146,7 @@ class AdsList extends React.Component {
 
         return (
             
-            < Grid container>
+           
             < Grid item md={4} >
                 <Card className={classes.card}>
                 <Link to={`/item/${this.props._id}`}>
@@ -162,8 +188,12 @@ class AdsList extends React.Component {
                     </CardContent>
                     </Link>
                     <CardActions className={classes.actions} disableActionSpacing>
-                        <IconButton aria-label="Add to favorites">
-                            <FavoriteIcon />
+                        <IconButton aria-label="Add to favorites" 
+                            onClick={this.favorite} 
+                            // color= "secondary" 
+                            color={this.state.favorite === !true ? "secondary" : "default"}
+                            >
+                            <FavoriteIcon  />
                         </IconButton>
                         <IconButton color="secondary" aria-label="Chat">
                             <Chat />
@@ -171,7 +201,7 @@ class AdsList extends React.Component {
                     </CardActions>
                 </Card>
             </Grid>
-            </Grid>
+            
         );
     }
 }
