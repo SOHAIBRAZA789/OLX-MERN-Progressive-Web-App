@@ -1,4 +1,4 @@
-import { GET_ADS, ADD_AD, DELETE_AD, ADS_LOADING } from '../actions/types';
+import { GET_ADS,GET_ADS_BY_CATEGORY, GET_ADS_BY_ID, ADD_AD, DELETE_AD, ADS_LOADING } from '../actions/types';
 
 //Ads Reducer
 const adsReducerDefaultState = {
@@ -9,6 +9,17 @@ const adsReducer = (state = adsReducerDefaultState, action) => {
     
     switch (action.type) {
         case GET_ADS:
+            return {...state,
+                    ads:action.payload,
+                    loading:false
+            };
+        case GET_ADS_BY_CATEGORY:
+            return {...state,
+                    ads:action.payload,
+                    loading:false
+            };
+
+            case GET_ADS_BY_ID:
             return {...state,
                     ads:action.payload,
                     loading:false

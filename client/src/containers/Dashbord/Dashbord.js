@@ -8,6 +8,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
 import Typography from '@material-ui/core/Typography';
+// import AdPost from '../../components'
 
 function TabContainer(props) {
   return (
@@ -53,7 +54,7 @@ class Dashbord extends React.Component {
         </AppBar>
         {value === 0 && <TabContainer>Item One</TabContainer>}
         {value === 1 && <TabContainer>Item Two</TabContainer>}
-        {value === 2 && <TabContainer>Item Three</TabContainer>}
+        {value === 2 && <TabContainer>Ad post</TabContainer>}
        
       </div>
     );

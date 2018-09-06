@@ -5,6 +5,8 @@ import {
     Grid, Toolbar, Typography, IconButton
 } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import { connect } from 'react-redux';
+import { getAds } from '../../store/actions/adsAction';
 // const LatestProduct = () => (
 //     <div>
 
@@ -14,6 +16,12 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 class LatestProduct extends React.Component {
     state = { expanded: false };
+    
+    componentDidMount() {
+        console.log('Testing getData Function');
+        
+        this.props.getAds();
+    }
 
     handleExpandClick = () => {
         this.setState(state => ({ expanded: !state.expanded }));
@@ -60,4 +68,9 @@ class LatestProduct extends React.Component {
         );
     }
 }
-export default LatestProduct;
+// export default LatestProduct;
+const mapStateToProps = (state) => ({
+    ads: state.ads  // ads from Index of Reducer file
+});
+
+export default connect(mapStateToProps, { getAds })(LatestProduct);

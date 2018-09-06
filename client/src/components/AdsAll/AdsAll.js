@@ -1,27 +1,35 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
+import {
+    AppBar, Button, Card, Paper, CardMedia, Collapse,
+    CardActions, CardContent, CardHeader, CssBaseline,
+    Grid, Toolbar, Typography, IconButton
+} from '@material-ui/core';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import { connect } from 'react-redux';
-import { getAdsByCategoty } from '../../store/actions/adsAction';
-import { AdsList ,AdSearch} from '../../components/';
-import { Grid } from '@material-ui/core';
+import { getAds } from '../../store/actions/adsAction';
+import { AdsList } from '../../components/';
+import adsSelector from '../../store/selectors/adsSelector'
 
-
-class CategoryPage extends Component {
-
+class AdsAll extends React.Component {
+    state = { expanded: false };
+    
     componentDidMount() {
         console.log('Testing getData Function');
-        console.log(this.props.match.params.category);
-        this.props.getAdsByCategoty(this.props.match.params.category);
+        
+        this.props.getAds();
     }
+
+    handleExpandClick = () => {
+        this.setState(state => ({ expanded: !state.expanded }));
+    };
 
     render() {
         const { ads } = this.props.ads;
+
         return (
-            <Fragment>
-                <div className="layou1t">
-                
-                <AdSearch/>
-                    <center><h1>{this.props.match.params.category.toUpperCase()}</h1></center>
-                    <Grid container  >
+            
+            <div>
+               <Grid container  >
                     <Grid item md={1}>
                     </Grid>
                     <Grid item md={10}>
@@ -38,14 +46,14 @@ class CategoryPage extends Component {
                     <Grid item md={1}>
                     </Grid>
                     </Grid>
-                </div>
-            </Fragment>
+            </div>
         );
     }
 }
-
+// export default LatestProduct;
 const mapStateToProps = (state) => ({
     ads: state.ads  // ads from Index of Reducer file
+    // ads: adsSelector(state.ads, state.filters)
 });
 
-export default connect(mapStateToProps, { getAdsByCategoty })(CategoryPage);
+export default connect(mapStateToProps, { getAds })(AdsAll);

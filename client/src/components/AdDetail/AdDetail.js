@@ -156,7 +156,7 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAds } from '../../store/actions/adsAction';
+import { getAdsById } from '../../store/actions/adsAction';
 import {
     AppBar, Button, Card, Paper, CardMedia, Collapse,
     CardActions, CardContent, CardHeader, CssBaseline,
@@ -165,11 +165,19 @@ import {
 // import './AdsList.css';
 
 
-class adsList extends Component {
-
+class AdDetail extends Component {
+    
+    // componentDidMount() {
+        
+    //     this.props.getAdsById(this.props.match.params.id);
+    //     console.log('AdsDEtail page');
+        
+    // }
 
     render() {
+        
         const { ads } = this.props.ads;
+        console.log('Hi2',ads);
         // const paramsId = this.props.match.params.id;
 
         // console.log(this.props.match);
@@ -177,8 +185,8 @@ class adsList extends Component {
         //     return ad._id === paramsId;
         // })
         let filteredAds = ads.find((ad) => ad._id === this.props.match.params.id);
-        console.log(filteredAds);
-        console.log(this.props.match.params.id);
+        // console.log(filteredAds);
+        // console.log(this.props.match.params.id);
         return (
             <Fragment>
                 <div className="layout">
@@ -293,5 +301,5 @@ const mapStateToProps = (state) => ({
     ads: state.ads // ads from Index of Reducer file
 });
 
-export default connect(mapStateToProps, { getAds })(adsList);
+export default connect(mapStateToProps, { getAdsById })(AdDetail);
 

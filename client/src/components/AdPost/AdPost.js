@@ -1,15 +1,3 @@
-// import React from 'react';
-
-
-// const AdPost = () => (
-//     <div>
-
-//         <h1> Post Ad Pages </h1>
-//     </div>
-// );
-
-// export default AdPost ;
-
 import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
@@ -70,18 +58,18 @@ class AdPost extends React.Component {
         showPassword: false
     };
     success = () => {
-    toast.success("Add Post !", {
+        toast.success("Add Post !", {
             position: toast.POSITION.TOP_RIGHT,
             autoClose: 2000
         });
     }
-    
+
     error = () => {
         toast.error("Not Add Post!", {
-                position: toast.POSITION.TOP_RIGHT,
-                autoClose: 2000
-            });
-        }
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 2000
+        });
+    }
 
     onPreviewDrop = files => {
         this.setState({
@@ -146,7 +134,7 @@ class AdPost extends React.Component {
                 .catch(error => {
                     console.error("Error:", error)
                     this.error();
-            });
+                });
         }
     };
 
@@ -290,7 +278,7 @@ class AdPost extends React.Component {
                                     fullWidth
                                     className={classNames(classes.margin, classes.textField)}
                                 >
-                                    <ReactDropzone  accept="image/*" onDrop={this.onPreviewDrop}>
+                                    <ReactDropzone accept="image/*" onDrop={this.onPreviewDrop}>
                                         Drop an image, get a preview!
                                 </ReactDropzone>
                                 </FormControl>

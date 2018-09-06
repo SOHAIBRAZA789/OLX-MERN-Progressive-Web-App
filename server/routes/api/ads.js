@@ -19,9 +19,30 @@ const storage = multer.diskStorage({
 
   const upload = multer({ storage });
 
-
 // @route   GET api/ads
 // @desc    Get All Ads
+// @access  Public
+router.get('/', (req, res) => {
+    
+   
+    AdModel.find()
+        .sort({ date: -1 })
+        .then(ads => res.json(ads));
+});
+
+// @route   GET api/ads
+// @desc    Get Ads By Id
+// @access  Public
+router.get('/item/:id', (req, res) => {
+    console.log(req.params.id);
+   
+    AdModel.find({_id:req.params.id})
+        .sort({ date: -1 })
+        .then(ads => res.json(ads));
+});
+
+// @route   GET api/ads
+// @desc    Get Ads By Category
 // @access  Public
 router.get('/category/:category', (req, res) => {
     console.log(req.params.category);

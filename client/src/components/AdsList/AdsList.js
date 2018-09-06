@@ -1,66 +1,3 @@
-// import React, { Component, Fragment } from 'react';
-// import { Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
-// import { getAds } from '../../store/actions/adsAction';
-// import {
-//     AppBar, Button, Card, Paper, CardMedia, Collapse,
-//     CardActions, CardContent, CardHeader, CssBaseline,
-//     Grid, Toolbar, Typography, Hidden
-// } from '@material-ui/core';
-// import './AdsList.css';
-// import { stat } from 'fs';
-
-
-// const AdsList =({_id,title,category,description,city,price,phone,created_date})=>(
-
-//                             /* Sub featured posts */
-//                             < Grid  container spacing={40} className="cardGrid " >
-//                                 {
-//                                     <Grid item  xs={12} md={12}>
-//                                         <Link to={`/item/${_id}`}>
-//                                             <Card className="card">
-//                                                 <div className="cardDetails">
-//                                                     <CardContent>
-//                                                         <Typography variant="headline">{title}</Typography>
-//                                                         <Typography variant="subheading" color="textSecondary">
-//                                                             {category}
-//                                                         </Typography>
-//                                                         <Typography variant="subheading" paragraph>
-//                                                             {description}
-//                                                         </Typography>
-//                                                         <Typography variant="subheading" paragraph>
-//                                                             {city}
-//                                                         </Typography>
-//                                                         <Typography variant="subheading" paragraph>
-//                                                             {price}
-//                                                         </Typography>
-//                                                         <Typography variant="subheading" paragraph>
-//                                                             {phone}
-//                                                         </Typography>
-//                                                         <Typography variant="subheading" paragraph>
-//                                                             {created_date}
-//                                                         </Typography>
-//                                                     </CardContent>
-//                                                 </div>
-//                                                 <Hidden xsDown>
-//                                                     {/* <CardMedia
-//                                                     className="cardMedia"
-//                                                     image="./images/house.svg" // eslint-disable-line max-len
-//                                                     title="Image title"
-//                                                 /> */}
-//                                                     <img className="Adsimages" src="./images/renthome.jpg" />
-//                                                 </Hidden>
-//                                             </Card>
-//                                         </Link>
-//                                     </Grid>
-
-//                                 }
-//                             </Grid>
-//                             /* End sub featured posts */
-//                             );
-//     export default AdsList;
-
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -211,3 +148,23 @@ AdsList.propTypes = {
 };
 
 export default withStyles(styles)(AdsList);
+
+// import React from 'react';
+// import AdsListPage from './AdsListPage';
+
+// class AdsList extends React.Component {
+
+
+//     render(){
+//         return(
+//             <div>
+//                <AdsListPage/>
+//             </div>
+//         )
+//     }
+// }
+
+// export default AdsList
+
+
+

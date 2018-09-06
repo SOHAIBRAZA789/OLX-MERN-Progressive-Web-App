@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './HomePage.css';
-import { Category, Footer, LatestProduct, AdSearch } from '../../components';
+import { Category, Footer, LatestProduct, AdSearch, AdsList, AdsAll } from '../../components';
 import { Grid, Typography } from '@material-ui/core';
 
 class HomePage extends Component {
@@ -23,8 +23,15 @@ class HomePage extends Component {
                     </Grid>
                 </Grid>
                 <Grid className="container">
-                    <Category />
-                    <LatestProduct />
+                    <Grid md={12}>
+                        <Category />
+                    </Grid>
+                    <Grid md={12}>
+                        <AdsAll />
+                    </Grid>
+
+
+                    {/* <LatestProduct /> */}
                 </Grid>
 
             </Fragment>
