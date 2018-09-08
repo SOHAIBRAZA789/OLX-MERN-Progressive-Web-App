@@ -152,7 +152,7 @@ class AdPost extends React.Component {
                                 <FormControl fullWidth className={classes.margin}>
                                     <InputLabel htmlFor="adornment-password">
                                         Name
-                  </InputLabel>
+                                    </InputLabel>
                                     <Input
                                         id="name"
                                         type="text"
@@ -164,7 +164,7 @@ class AdPost extends React.Component {
                                 <FormControl fullWidth className={classes.margin}>
                                     <InputLabel htmlFor="adornment-password">
                                         Title
-                  </InputLabel>
+                                    </InputLabel>
                                     <Input
                                         id="title"
                                         type="text"
@@ -185,7 +185,7 @@ class AdPost extends React.Component {
                                     />
                                 </FormControl> */}
                                 <FormControl fullWidth className={classes.margin}>
-                                    <InputLabel htmlFor="age-simple">Category</InputLabel>
+                                    <InputLabel htmlFor="category-simple">Category</InputLabel>
                                     <Select
                                         value={this.state.category}
                                         onChange={this.handleChange("category")}

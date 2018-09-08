@@ -12,10 +12,10 @@ import adsSelector from '../../store/selectors/adsSelector'
 
 class AdsAll extends React.Component {
     state = { expanded: false };
-    
+
     componentDidMount() {
         console.log('Testing getData Function');
-        
+
         this.props.getAds();
     }
 
@@ -24,36 +24,64 @@ class AdsAll extends React.Component {
     };
 
     render() {
+        debugger;
         const { ads } = this.props.ads;
+        console.log('filter adds adds')
+        console.log(ads)
+      //  console.log('data filter', this.props.filter)
+        //console.log('hrllo', this.props.ads.ads);
+        // let adsFilter = ads.filter(ad => {
+
+        //     return ad.category == this.props.filter.category;
+        // })
 
         return (
-            
+
             <div>
-               <Grid container  >
-                    <Grid item md={1}>
-                    </Grid>
-                    <Grid item md={10}>
-                    <Grid container spacing={32}>
-                        {
-                            ads.length == 0 ? 'No Ad' : ads.map((ads) =>
-                                (
-                                    <AdsList key={ads.id} {...ads} />
-                                )
+                <Grid container  >
+                    {/* <Grid item md={1}>
+                    </Grid> */}
+                    <Grid item md={12}>
+                        <Grid container spacing={32}>
+                            {/* {
+                            ads.length == 0 ? 'No Ad' :(
+
+                                adsFilter.length == 0 ?  ads.map((ads) =>
+
+                                        (
+                                            <AdsList key={ads.id} {...ads} />
+                                        )
+                                    ) : adsFilter.map((ads) =>
+                                        (
+                                            <AdsList key={ads.id} {...ads} />
+                                        )
                             )
-                        }
+                            )
+                        } */}
+                            {
+                                ads.length == 0 ? 'No Ad' : ads.map((ads) =>
+                                    (
+                                        <AdsList key={ads.id} {...ads} />
+                                    )
+                                )
+                            }
                         </Grid >
                     </Grid>
-                    <Grid item md={1}>
-                    </Grid>
-                    </Grid>
+                    {/* <Grid item md={1}>
+                    </Grid> */}
+                </Grid>
             </div>
         );
     }
 }
 // export default LatestProduct;
-const mapStateToProps = (state) => ({
-    ads: state.ads  // ads from Index of Reducer file
-    // ads: adsSelector(state.ads, state.filters)
-});
+const mapStateToProps = (state) => {
+    //ads: state.ads,
+
+    // filter: state.filters  // ads from Index of Reducer file
+
+    return {ads: state.filters.category ?  {ads:adsSelector(state.ads, state.filters)} :state.ads}
+
+};
 
 export default connect(mapStateToProps, { getAds })(AdsAll);

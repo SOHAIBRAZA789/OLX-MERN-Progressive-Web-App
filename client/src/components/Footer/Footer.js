@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import './Footer.css';
 
 const footers = [
     {
@@ -79,7 +80,9 @@ const Footer = (props)=>{
     return (
     
     <footer >
-    {/* <Grid container > */}
+    <Grid container className="box-layout_Footer"> 
+
+    
         {/* {footers.map(footer => (
             <Grid item xs key={footer.title}>
                 <Typography variant="title" color="textPrimary" gutterBottom>
@@ -93,7 +96,7 @@ const Footer = (props)=>{
             </Grid>
         ))} */}
         {/* <Grid item sm={12} md={12} xs={12}><img src="./images/footerBanner.png"/></Grid> */}
-    {/* </Grid> */}Footer compent in size aproter
+     </Grid>
 </footer>
 
 )}

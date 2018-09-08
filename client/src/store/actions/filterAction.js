@@ -6,7 +6,7 @@ export const setTextFilter = (text = '') => (
     });
 
 // SORT_BY_AMOUNT
-export const sortByCategory = (category) => (
+export const sortByCategory = (category = '') => (
     {
         type: 'SORT_BY_CATEGORY',
         category: category

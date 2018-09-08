@@ -11,14 +11,19 @@ import './AdSearch.css';
 import { setTextFilter,sortByCategory } from '../../store/actions/filterAction';
 
 class AdSearch extends React.Component {
-    // state = {
-    //     search: "",
-    //     category: "",
-    // };
+    state = {
+        // search: "",
+        category: "",
+    };
+    
 
     handleCategoryChange = (e) =>  {
         const category = e.target.value;
         this.props.sortByCategory(category);
+        this.setState({
+            category: category
+        });
+        
     };
 
     // _handleSubmit = e => {
@@ -45,15 +50,23 @@ class AdSearch extends React.Component {
                         <Grid container spacing={16} style={{ backgroundColor: '#dcd7d780' }}>
                             {/* Start CategorySeerch Text */}
                             <Grid item xs={12} sm={12} md={5}>
-                                <FormControl style={{ minWidth: '100%' }} className='{classes.formControl}'>
+                                <FormControl style={{ minWidth: '100%' }} >
                                     <InputLabel htmlFor="category">Select Category</InputLabel>
-                                    <Select onChange={this.handleCategoryChange} inputProps={{ name: 'category', id: 'category', }}>
+                                    <Select value={this.state.category} onChange={this.handleCategoryChange} inputProps={{ name: 'category', id: 'category', }}>
                                         <MenuItem value="">
                                             <em>None</em>
                                         </MenuItem>
-                                        <MenuItem value="ten">Ten</MenuItem>
-                                        <MenuItem value="kl">Twenty</MenuItem>
-                                        <MenuItem value="kuus">Thirty</MenuItem>
+                                        <MenuItem value="property">Property</MenuItem>
+                                        <MenuItem value="vehicle">Vehicle</MenuItem>
+                                        <MenuItem value="electronics">Electronics</MenuItem>
+                                        <MenuItem value="furniture">Furniture</MenuItem>
+                                        <MenuItem value="jobs">Jobs</MenuItem>
+                                        <MenuItem value="mobiles">Mobiles</MenuItem>
+                                        <MenuItem value="bikes">Bikes</MenuItem>
+                                        <MenuItem value="books">Books</MenuItem>
+                                        <MenuItem value="fashion">Fashion</MenuItem>
+                                        <MenuItem value="pets">Pets</MenuItem>
+                                        <MenuItem value="service">Services</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Grid>

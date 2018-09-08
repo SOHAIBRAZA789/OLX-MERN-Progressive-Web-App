@@ -14,3 +14,9 @@
     height: 80vh;
     justify-content: center;
 }
+
+.product-Category-Container{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3em;
+}

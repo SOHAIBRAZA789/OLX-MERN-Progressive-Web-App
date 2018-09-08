@@ -1,22 +1,21 @@
 // GET VISIABLE EXPENSIVE
-const adsSelector = (ads, { text }) => {
-    return ads.filter((ads) => {
-     
-        return ads.description.toLowerCase().includes(text.toLowerCase());
-       
-        // const textMatch = expense.description.toLowerCase().includes(text.toLowerCase());
-        // return textMatch;
-    })
-    // .sort((a, b) => {
-    //     if (sortBy === 'date') {
-    //         return a.createdAt < b.createdAt ? 1 : -1;
-    //     }
-    //     else if (sortBy === 'amount') {
-    //         return a.amount < b.amount ? 1 : -1;
-    //     }
+const adsSelector = (ads, { text, category }) => {
 
-    // });
+     return ads.ads.filter(ad => {
+         console.log('filter ad',ad)
+        const searchByCategory = ad.category == category;
+        const textMatch = ad.title.toLowerCase().includes(text.toLowerCase());
+        return searchByCategory & textMatch  ;
+
+
+    })
+    
 }
+
+// let adsFilter = ads.filter(ad => {
+
+        //     return ad.category == this.props.filter.category;
+        // })
 
 export default adsSelector;
 

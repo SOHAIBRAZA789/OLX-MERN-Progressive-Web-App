@@ -90,20 +90,7 @@ const Category = () => {
         <React.Fragment>
             {/* <CssBaseline /> */}
                 
-            {/* Hero unit */}
-            <div className="heroContent">
-                <Typography variant="display1" align="center" color="textPrimary" gutterBottom>
-                    Product Categories
-                    </Typography>
-                <Typography variant="title" align="center" color="secondary" component="p">
-                    Buy And Sell Everything From Used Cars To Mobile Phones And Computers,
-                    Or Search For Property, Jobs And More
-                </Typography>
-            </div>
-            {/* End hero unit */}
-
-            
-            <Grid container spacing={8} className="catagory-grid" alignItems="flex-end">
+            <Grid container spacing={8}  alignItems="flex-end">
                 {tiers.map(tier => (
                     // Enterprise card is full width at sm breakpoint
                     <Grid item  xs={6} sm={tier.title === 'Enterprise' ? 12 : 4} md={2}>
