@@ -1,9 +1,12 @@
 const express = require('express');
-const session = require('express-session');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const path = require('path');
 var passport = require("passport");
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const cookieparser = require('cookie-parser');
+const mongoose = require('mongoose');
+
+const path = require('path');
+
 const app = express();
 
 const ads = require('./routes/api/ads');
@@ -24,7 +27,10 @@ app.use(session({
 }
 ));
 
-require('./passport/index')
+app.use(cookieparser());
+
+require('./passport/index');
+
 // ** Initilize Passport Session in Express App Middleware ** //
 app.use(passport.initialize());
 // ** Add Passport Session in Express App Middleware ** //

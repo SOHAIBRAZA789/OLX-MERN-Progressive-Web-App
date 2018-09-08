@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getAdsByCategoty } from '../../store/actions/adsAction';
 import { AdsList ,AdSearch} from '../../components/';
 import { Grid } from '@material-ui/core';
-
+import {adsSelectorByText} from '../../store/selectors/adsSelector';
 
 class CategoryPage extends Component {
 
@@ -44,8 +44,10 @@ class CategoryPage extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    ads: state.ads  // ads from Index of Reducer file
-});
+const mapStateToProps = (state) => {
+    // ads: state.ads  // ads from Index of Reducer file
+    return {ads: state.filters.text ?  {ads:adsSelectorByText(state.ads, state.filters)} :state.ads}
+};
 
 export default connect(mapStateToProps, { getAdsByCategoty })(CategoryPage);
+

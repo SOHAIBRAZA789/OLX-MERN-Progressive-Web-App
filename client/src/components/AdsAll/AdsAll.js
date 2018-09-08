@@ -24,7 +24,7 @@ class AdsAll extends React.Component {
     };
 
     render() {
-        debugger;
+        // debugger;
         const { ads } = this.props.ads;
         console.log('filter adds adds')
         console.log(ads)
@@ -80,6 +80,7 @@ const mapStateToProps = (state) => {
 
     // filter: state.filters  // ads from Index of Reducer file
 
+    // return {ads: state.filters.category ?  {ads:adsSelector(state.ads, state.filters)} :state.ads}
     return {ads: state.filters.category ?  {ads:adsSelector(state.ads, state.filters)} :state.ads}
 
 };

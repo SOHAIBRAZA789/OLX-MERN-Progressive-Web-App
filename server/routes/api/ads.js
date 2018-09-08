@@ -1,30 +1,30 @@
 const express = require('express');
 const router = express.Router();
-var multer  = require('multer');
+var multer = require('multer');
 
 
 // Ad Model
 const { AdModel } = require('../../db/models/adModel');
-
+const {User} = require('../../db/models/userModel');
 // ** Code for Upload Image from Form **//
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-    //   cb(null, 'client/build/static/media/');
-      cb(null, 'client/public/upload/');
+        //   cb(null, 'client/build/static/media/');
+        cb(null, 'client/public/upload/');
     },
     filename: function (req, file, cb) {
         cb(null, `${Date.now()}-${file.originalname}`)
-      }
-  });
+    }
+});
 
-  const upload = multer({ storage });
+const upload = multer({ storage });
 
 // @route   GET api/ads
 // @desc    Get All Ads
 // @access  Public
 router.get('/', (req, res) => {
-    
-   
+
+
     AdModel.find()
         .sort({ date: -1 })
         .then(ads => res.json(ads));
@@ -35,8 +35,8 @@ router.get('/', (req, res) => {
 // @access  Public
 router.get('/item/:id', (req, res) => {
     console.log(req.params.id);
-   
-    AdModel.find({_id:req.params.id})
+
+    AdModel.find({ _id: req.params.id })
         .sort({ date: -1 })
         .then(ads => res.json(ads));
 });
@@ -46,8 +46,8 @@ router.get('/item/:id', (req, res) => {
 // @access  Public
 router.get('/category/:category', (req, res) => {
     console.log(req.params.category);
-   
-    AdModel.find({category:req.params.category})
+
+    AdModel.find({ category: req.params.category })
         .sort({ date: -1 })
         .then(ads => res.json(ads));
 });
@@ -55,13 +55,13 @@ router.get('/category/:category', (req, res) => {
 // @route   POST api/ads
 // @desc    Creat A Post
 // @access  Public
-router.post('/',upload.single("file"), (req, res) => {
+router.post('/', upload.single("file"), (req, res) => {
     let file = req.file.filename;
 
     console.log(file)
-    
+
     const newAd = new AdModel({
-        name : req.body.name,
+        name: req.body.name,
         title: req.body.title,
         category: req.body.category,
         description: req.body.description,
@@ -70,15 +70,34 @@ router.post('/',upload.single("file"), (req, res) => {
         city: req.body.city,
         email: req.body.email,
         phone: req.body.phone,
-        file : file
-        
+        file: file
+
     });
 
     newAd.save().then((doc) => {
         res.json(doc);
         console.log('Save Data', doc);
     }, (e) => {
-        console.log('Unable to Save data',e);
+        console.log('Unable to Save data', e);
+    });
+});
+
+
+// @route   POST api/ads
+// @desc    Creat A Favourite
+// @access  Public
+router.post('/favourite', (req, res) => {
+    // const newAd = User({
+    //     favourite: req.body.favourite,
+    // });
+    console.log("Hello",req.body);
+    var myquery = { _id: req.body.userId };
+    var newvalues = { $set: { favourite: req.body.productId } };
+    User.update(myquery,newvalues).then((doc) => {
+        res.json(doc);
+        console.log('Save Data', doc);
+    }, (e) => {
+        console.log('Unable to Save data', e);
     });
 });
 module.exports = router;

@@ -15,7 +15,7 @@ const adSchema = new Schema({
     city: { type: String, required: "Enter city" },
     email: { type: String },
     phone: { type: Number, required: "Enter Phone Number" },
-    favorite: { type: Boolean },
+    // favorite: { type: Boolean },
     file: { type: String },
     created_date: { type: Date, default: Date.now }
 });
