@@ -70,6 +70,7 @@ router.post('/', upload.single("file"), (req, res) => {
         city: req.body.city,
         email: req.body.email,
         phone: req.body.phone,
+        userId: req.body.userId,
         file: file
 
     });
@@ -90,27 +91,36 @@ router.post('/favourite', (req, res) => {
     // const newAd = User({
     //     favourite: req.body.favourite,
     // });
-    console.log("Hello", req.body);
+    //console.log("Hello", req.body);
     var myquery = { _id: req.body.userId };
     var newvalues = { $push: { favourite: req.body.productId } };
+    var unFav = { $pull: { favourite: req.body.productId } };
 
+    User.findOne({ _id:req.body.userId,'favourite': req.body.productId }, (err, favMatch) => {
+        console.log("favorite record",req.body.productId)
 
-    User.findOne({ 'favourite': req.body.productId }, (err, favMatch) => {
+        console.log("favorite record",favMatch)
         if (favMatch) {
-            return res.json({
-                error: `Sorry, already a favourite this ad`
+            console.log("unfv")
+            User.update(myquery, unFav).then((err, upd, doc) => {
+                res.json( doc);
+               // res.end()
+                // console.log('Save Data', doc);
             })
+                .catch((err) => {
+                    res.json(err)
+                   // res.end()
+                })
         }
-
-        User.update(myquery, newvalues).then((doc) => {
-            res.json(doc);
-            console.log('Save Data', doc);
-        }, (e) => {
-            console.log('Unable to Save data', e);
-        });
+        else {
+            console.log("fv")
+            User.update(myquery, newvalues).then((doc) => {
+                res.json(doc);
+                console.log('Save Data', doc);
+            });
+        }
     })
-
-
-
 });
+
+
 module.exports = router;

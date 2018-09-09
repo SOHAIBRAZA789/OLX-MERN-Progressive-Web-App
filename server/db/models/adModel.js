@@ -17,7 +17,8 @@ const adSchema = new Schema({
     phone: { type: Number, required: "Enter Phone Number" },
     // favorite: { type: Boolean },
     file: { type: String },
-    created_date: { type: Date, default: Date.now }
+    created_date: { type: Date, default: Date.now },
+    userId:[{ type: Schema.Types.ObjectId, ref: 'User' }]
 });
 
 var AdModel = mongoose.model('AdModel', adSchema);

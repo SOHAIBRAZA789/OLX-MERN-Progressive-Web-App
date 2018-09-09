@@ -13,6 +13,7 @@ import Select from '@material-ui/core/Select';
 import ReactDropzone from 'react-dropzone'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { connect } from 'react-redux';
 import { Link, withRouter } from "react-router-dom";
 
 const styles = theme => ({
@@ -55,6 +56,7 @@ class AdPost extends React.Component {
         files: [],
         imagePreviewUrl: "",
         error: "",
+        userId: this.props.auth.user._id,
         showPassword: false
     };
     success = () => {
@@ -115,6 +117,8 @@ class AdPost extends React.Component {
             formData.append("name", state.name);
             formData.append("email", state.email);
             formData.append("city", state.city);
+            formData.append("userId", state.userId);
+
             formData.append("phone", state.phone);
             formData.append("file", state.files[0]);
 
@@ -139,6 +143,7 @@ class AdPost extends React.Component {
     };
 
     render() {
+        console.log('My User1:',this.props.auth.user._id);
         const { classes } = this.props;
 
         return (
@@ -318,5 +323,10 @@ AdPost.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(withRouter(AdPost));
+// export default withStyles(styles)(withRouter(AdPost));
 
+const mapStateToProps = (state) => ({
+    auth: state.auth
+});
+
+export default connect(mapStateToProps)(withStyles(styles)(AdPost));

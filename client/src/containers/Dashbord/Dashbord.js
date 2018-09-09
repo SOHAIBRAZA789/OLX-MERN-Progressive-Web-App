@@ -11,7 +11,8 @@ import Typography from '@material-ui/core/Typography';
 import { AdsList, AdSearch } from '../../components/';
 import { connect } from 'react-redux';
 import { getAds } from '../../store/actions/adsAction';
-import { Grid } from '@material-ui/core';
+import { logout } from '../../store/actions/authAction';
+import { Grid, Button } from '@material-ui/core';
 // import AdPost from '../../components'
 
 function TabContainer(props) {
@@ -49,7 +50,8 @@ class Dashbord extends React.Component {
   };
 
   render() {
-
+    console.log('My User',this.state.auth._id);
+    console.log('My Ads',this.props.ads);
     const { classes } = this.props;
     const { value } = this.state;
     let { ads } = this.props.ads;
@@ -61,15 +63,24 @@ class Dashbord extends React.Component {
           fvlist.push(ads)
         }
       })
+      });
 
-    }
-    );
+      let adLists = [];
+    ads.map(ad=>{
+     if(ad.userId == this.state.auth._id){
+      adLists.push(ad);
+     }
+    
+   });
+
+      console.log('User wise data',adLists);
     return (
       <div className={classes.root}>
+        <Button onClick={this.props.logout} variant="contained" color="default" style={{ color: "#ffffff", backgroundColor: "#93e84f" }}> Sign Out </Button>
         <AppBar position="static" >
           <Tabs value={value} onChange={this.handleChange} fullWidth >
             <Tab icon={<ChatIcon />} label="MESSAGE" />
-            <Tab  icon={<FavoriteIcon />} label="FAVORITES" />
+            <Tab icon={<FavoriteIcon />} label="FAVORITES" />
             <Tab icon={<ShoppingBasket />} label="AD POST" />
           </Tabs>
         </AppBar>
@@ -85,11 +96,21 @@ class Dashbord extends React.Component {
                 <AdsList key={ads.id} {...ads} />
 
               )
-
-            )
+             )
           }</Grid>
         </TabContainer>}
-        {value === 2 && <TabContainer>Ad post</TabContainer>}
+        {value === 2 && <TabContainer><Grid container> {
+            adLists.length == 0 ? (
+              <div className="list-item list-item--messagea">
+                <h1>No Favorite </h1>
+              </div>
+            ) : adLists.map((ads) =>
+              (
+                <AdsList key={ads.id} {...ads} />
+
+              )
+             )
+          }</Grid></TabContainer>}
 
       </div>
     );
@@ -108,4 +129,4 @@ const mapStateToProps = (state) => ({
   ads: state.ads
 });
 
-export default connect(mapStateToProps, { getAds })(withStyles(styles)(Dashbord));
+export default connect(mapStateToProps, { getAds,logout })(withStyles(styles)(Dashbord));

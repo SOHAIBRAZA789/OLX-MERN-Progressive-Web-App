@@ -90,15 +90,15 @@ class AdsList extends React.Component {
                 .then(res => res.json())
                 .then(response => {
                     console.log("Success:");
-                    toast("!", {
-                        position: toast.POSITION.TOP_RIGHT,
-                        autoClose: 2000
-                    });
+                    // toast("Login Successfully!", {
+                    //     position: toast.POSITION.TOP_RIGHT,
+                    //     autoClose: 2000
+                    // });
                     // this.props.history.push("/login");
                 })
                 .catch(error => {
                     console.error("Error:", error)
-                    toast("Invalid User Name and Password!", {
+                    toast("Un Favourite Ad!", {
                         position: toast.POSITION.TOP_RIGHT,
                         autoClose: 2000
                     });
@@ -114,7 +114,7 @@ class AdsList extends React.Component {
             alert('You are not Login');
         }
     };
-
+    
 
 
     handleExpandClick = () => {
@@ -202,42 +202,3 @@ export default connect(mapStateToProps)(withStyles(styles)(AdsList));
 
 
 
-
-/////////////////////////////////////////////////////////////
-// favorite = () => {
-//     let auth = this.pros.auth.user;
-//     let data = {
-//         favorite: this.state.favorite,
-//         productId: this.state.productId,
-//         userId: auth._id
-//     };
-
-//     if (auth.id !== null) {
-//         var url = "/api/ads/favourite";
-//         fetch(url, {
-//             method: "POST", // or 'PUT'
-//             body: data, // data can be `string` or {object}!
-//         })
-//             .then(res => res.json())
-//             .then(response => {
-//                 console.log("Success:");
-//                 // this.success();
-//                 // this.props.history.push("/login");
-//             })
-//             .catch(error => {
-//                 console.error("Error:", error)
-//                 // this.error();
-//             });
-
-
-//         console.log('Favorite');
-//         this.setState(state => ({
-//             favorite: !state.favorite,
-//             productId: this.props._id
-//         })
-//         );
-//     }
-//     else {
-//         alert('You are not Login');
-//     }
-// }

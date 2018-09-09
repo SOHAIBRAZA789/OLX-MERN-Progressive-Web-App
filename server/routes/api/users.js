@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const {User} = require('../../db/models/userModel');
-
+const { AdModel } = require('../../db/models/adModel');
 
 // this route is just used to get the user basic info
 router.get('/user', (req, res, next) => {
