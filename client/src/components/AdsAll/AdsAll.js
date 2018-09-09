@@ -28,7 +28,7 @@ class AdsAll extends React.Component {
         const { ads } = this.props.ads;
         console.log('filter adds adds')
         console.log(ads)
-      //  console.log('data filter', this.props.filter)
+        //  console.log('data filter', this.props.filter)
         //console.log('hrllo', this.props.ads.ads);
         // let adsFilter = ads.filter(ad => {
 
@@ -59,7 +59,9 @@ class AdsAll extends React.Component {
                             )
                         } */}
                             {
-                                ads.length == 0 ? 'No Ad' : ads.map((ads) =>
+                                ads.length == 0 ? <div className="list-item list-item--messagea">
+                                    <h1>No Ads </h1>
+                                </div> : ads.map((ads) =>
                                     (
                                         <AdsList key={ads.id} {...ads} />
                                     )
@@ -81,7 +83,7 @@ const mapStateToProps = (state) => {
     // filter: state.filters  // ads from Index of Reducer file
 
     // return {ads: state.filters.category ?  {ads:adsSelector(state.ads, state.filters)} :state.ads}
-    return {ads: state.filters.category ?  {ads:adsSelector(state.ads, state.filters)} :state.ads}
+    return { ads: state.filters.category ? { ads: adsSelector(state.ads, state.filters) } : state.ads }
 
 };
 

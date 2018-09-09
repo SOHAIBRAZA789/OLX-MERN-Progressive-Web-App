@@ -16,6 +16,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const styles = theme => ({
     card: {
@@ -89,12 +90,18 @@ class AdsList extends React.Component {
                 .then(res => res.json())
                 .then(response => {
                     console.log("Success:");
-                    // this.success();
+                    toast("!", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        autoClose: 2000
+                    });
                     // this.props.history.push("/login");
                 })
                 .catch(error => {
                     console.error("Error:", error)
-                    // this.error();
+                    toast("Invalid User Name and Password!", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        autoClose: 2000
+                    });
                 });
 
             this.setState(state => ({

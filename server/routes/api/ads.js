@@ -5,7 +5,7 @@ var multer = require('multer');
 
 // Ad Model
 const { AdModel } = require('../../db/models/adModel');
-const {User} = require('../../db/models/userModel');
+const { User } = require('../../db/models/userModel');
 // ** Code for Upload Image from Form **//
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -90,14 +90,27 @@ router.post('/favourite', (req, res) => {
     // const newAd = User({
     //     favourite: req.body.favourite,
     // });
-    console.log("Hello",req.body);
+    console.log("Hello", req.body);
     var myquery = { _id: req.body.userId };
-    var newvalues = { $set: { favourite: req.body.productId } };
-    User.update(myquery,newvalues).then((doc) => {
-        res.json(doc);
-        console.log('Save Data', doc);
-    }, (e) => {
-        console.log('Unable to Save data', e);
-    });
+    var newvalues = { $push: { favourite: req.body.productId } };
+
+
+    User.findOne({ 'favourite': req.body.productId }, (err, favMatch) => {
+        if (favMatch) {
+            return res.json({
+                error: `Sorry, already a favourite this ad`
+            })
+        }
+
+        User.update(myquery, newvalues).then((doc) => {
+            res.json(doc);
+            console.log('Save Data', doc);
+        }, (e) => {
+            console.log('Unable to Save data', e);
+        });
+    })
+
+
+
 });
 module.exports = router;

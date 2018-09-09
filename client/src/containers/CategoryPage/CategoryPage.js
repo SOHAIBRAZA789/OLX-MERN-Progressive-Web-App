@@ -27,7 +27,11 @@ class CategoryPage extends Component {
                     <Grid item md={10}>
                     <Grid container spacing={32}>
                         {
-                            ads.length == 0 ? 'No Ad' : ads.map((ads) =>
+                            ads.length == 0 ? (
+                                <div className="list-item list-item--messagea">
+                                    <h1>No Ads </h1>
+                                </div>
+                            ) : ads.map((ads) =>
                                 (
                                     <AdsList key={ads.id} {...ads} />
                                 )
