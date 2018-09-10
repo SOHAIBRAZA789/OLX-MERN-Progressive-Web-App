@@ -34,10 +34,12 @@ class HomePage extends Component {
                         </Typography>
                         </div>
                     </Grid>
-                    <Grid md={12}>
+                    <Grid md={12} >
+                    <div classNmae="conatiner-background">
                         <Category />
+                    </div>
                     </Grid>
-                    <Grid md={12}>
+                    <Grid md={12} >
                         <div className="product-Category-Container">
                             <Typography variant="display1" align="center" color="textPrimary" gutterBottom>
                                 LATEST PRODUCTS

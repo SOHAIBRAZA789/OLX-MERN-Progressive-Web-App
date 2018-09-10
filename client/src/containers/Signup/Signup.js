@@ -108,8 +108,8 @@ class SignUp extends React.Component {
 
     return (
       <Grid className={classes.container} container>
-        <Grid item xs={12} sm={4} />
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={2} />
+        <Grid item xs={12} sm={8}>
           <Paper className={classes.paper}>
             <div className={classes.root}>
               <h1>Register Here</h1>
@@ -179,7 +179,7 @@ class SignUp extends React.Component {
             </div>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={4} />
+        <Grid item xs={12} sm={2} />
       </Grid>
     );
   }

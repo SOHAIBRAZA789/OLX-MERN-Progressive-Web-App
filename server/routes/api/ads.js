@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 
 
     AdModel.find()
-        .sort({ date: -1 })
+        .sort({ created_date: 'desc' })
         .then(ads => res.json(ads));
 });
 
@@ -37,7 +37,7 @@ router.get('/item/:id', (req, res) => {
     console.log(req.params.id);
 
     AdModel.find({ _id: req.params.id })
-        .sort({ date: -1 })
+        .sort({ created_date: 'desc' })
         .then(ads => res.json(ads));
 });
 
@@ -48,7 +48,7 @@ router.get('/category/:category', (req, res) => {
     console.log(req.params.category);
 
     AdModel.find({ category: req.params.category })
-        .sort({ date: -1 })
+        .sort({ created_date: 'desc' })
         .then(ads => res.json(ads));
 });
 

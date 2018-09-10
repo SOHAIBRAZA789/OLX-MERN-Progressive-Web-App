@@ -13,6 +13,13 @@ import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Chat from '@material-ui/icons/Chat';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -49,10 +56,11 @@ const styles = theme => ({
 
 class AdsList extends React.Component {
     state = {
-
+        
         favorite: false,
         productId: '',
-        auth: this.props.auth.user
+        auth: this.props.auth.user,
+        open: false,
     };
 
 
@@ -114,7 +122,14 @@ class AdsList extends React.Component {
             alert('You are not Login');
         }
     };
-    
+
+    handleClickOpen = () => {
+        this.setState({ open: true });
+    };
+
+    handleClose = () => {
+        this.setState({ open: false });
+    };
 
 
     handleExpandClick = () => {
@@ -176,9 +191,55 @@ class AdsList extends React.Component {
                         >
                             <FavoriteIcon />
                         </IconButton>
-                        <IconButton color="secondary" aria-label="Chat">
+                        <IconButton onClick={this.handleClickOpen} color="secondary" aria-label="Chat">
                             <Chat />
+
                         </IconButton>
+                        <Dialog
+                            open={this.state.open}
+                            onClose={this.handleClose}
+                            aria-labelledby="form-dialog-title"
+                        >
+                            <DialogTitle id="form-dialog-title">Message</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                    Give Us your value able feedback
+            </DialogContentText>
+
+                                <TextField
+                                    autoFocus
+                                    margin="dense"
+                                    id="name"
+                                    label="Name"
+                                    type="text"
+                                    fullWidth
+                                />
+                                <TextField
+                                    autoFocus
+                                    margin="dense"
+                                    id="Phone"
+                                    label="Phone"
+                                    type="text"
+                                    fullWidth
+                                />
+                                <TextField
+                                    autoFocus
+                                    margin="dense"
+                                    id="message"
+                                    label="Message"
+                                    type="text"
+                                    fullWidth
+                                />
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={this.handleClose} color="primary">
+                                    Cancel
+            </Button>
+                                <Button onClick={this.handleClose} color="primary">
+                                    Send
+            </Button>
+                            </DialogActions>
+                        </Dialog>
                     </CardActions>
                 </Card>
             </Grid>
@@ -202,3 +263,22 @@ export default connect(mapStateToProps)(withStyles(styles)(AdsList));
 
 
 
+//////////////////////////////////////////////////
+
+
+//  class FormDialog extends React.Component {
+//   state = {
+//     open: false,
+//   };
+
+
+
+//   render() {
+//     return (
+//       <div>
+//         <Button onClick={this.handleClickOpen}>Open form dialog</Button>
+
+//       </div>
+//     );
+//   }
+// }

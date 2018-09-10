@@ -11,6 +11,8 @@ const app = express();
 
 const ads = require('./routes/api/ads');
 const users = require('./routes/api/users');
+// const message = require('./routes/api/message');
+
 
 const dbConnection = require('./db') // loads our connection to the mongo database
 
@@ -47,7 +49,8 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 app.use('/api/ads',ads)
 //User Routes
 app.use('/api/users', users);
-
+//User Routes
+// app.use('/api/message', message);
 //Error Control
 app.use(function (err, req, res, next) {
 

@@ -11,7 +11,7 @@ class Login extends React.Component {
     const { user } = this.props;
 
     return (
-      <div>
+      <div className="box-layout_HomePage">
         {/* <Header /> */}
         <LoginPage
           onSubmit={data => {

@@ -17,7 +17,7 @@ class CategoryPage extends Component {
         const { ads } = this.props.ads;
         return (
             <Fragment>
-                <div className="layou1t">
+                <div className="layou1t" style={{marginTop:'10vh'}}>
                 
                 <AdSearch/>
                     <center><h1>{this.props.match.params.category.toUpperCase()}</h1></center>

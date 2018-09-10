@@ -49,7 +49,7 @@ class AdSearch extends React.Component {
                     <Grid item md={8}>
                         <Grid container spacing={16} style={{ backgroundColor: '#dcd7d780' }}>
                             {/* Start CategorySeerch Text */}
-                            <Grid item xs={12} sm={12} md={5}>
+                            <Grid item xs={12} sm={12} md={6}>
                                 <FormControl style={{ minWidth: '100%' }} >
                                     <InputLabel htmlFor="category">Select Category</InputLabel>
                                     <Select value={this.state.category} onChange={this.handleCategoryChange} inputProps={{ name: 'category', id: 'category', }}>
@@ -72,17 +72,17 @@ class AdSearch extends React.Component {
                             </Grid>
                             {/* End Category Seerch Text */}
                             {/* Start Seerch Text */}
-                            <Grid item xs={12} sm={12} md={5}>
+                            <Grid item xs={12} sm={12} md={6}>
                                 <TextField  onChange={this.onTextChange} style={{ minWidth: '100%' }} id="search" label="Search field" type="search" className='{classes.textField}' />
                             </Grid>
                             {/* End Seerch Text */}
                             {/* Start Search Button */}
-                            <Grid item xs={12} sm={12} md={2}>
+                            {/* <Grid item xs={12} sm={12} md={2}>
                                 <Button onClick={this._handleSubmit} variant="contained" color="default" style={{ backgroundColor: '#93e84f', minWidth: '100%', height: '100%' }}>
                                     <SearchIcon className='{classes.rightIcon}' />
                                     Search
                                 </Button>
-                            </Grid>
+                            </Grid> */}
                             {/* End Search Button */}
                         </Grid>
                     </Grid>

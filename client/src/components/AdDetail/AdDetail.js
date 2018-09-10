@@ -195,43 +195,17 @@ class AdDetail extends Component {
                     {
                         ads._id == this.props.match.params.id ? 'No Ad' :
                             /* Sub featured posts */
-                            < Grid container spacing={40} className="cardGrid " >
-                                {
-                                    <Grid item key={ads._id} xs={12} md={12}>
+                            < Grid container  >
+                            <Grid item md={1}>
+                            </Grid>
 
-                                        {/* <Card className="card">
-                                                <div className="cardDetails">
-                                                    <CardContent>
-                                                        <Typography variant="headline">{ filteredAds.title}</Typography>
-                                                        <Typography variant="subheading" color="textSecondary">
-                                                            { filteredAds.category}
-                                                        </Typography>
-                                                        <Typography variant="subheading" paragraph>
-                                                            { filteredAds.description}
-                                                        </Typography>
-                                                        <Typography variant="subheading" paragraph>
-                                                            { filteredAds.city}
-                                                        </Typography>
-                                                        <Typography variant="subheading" paragraph>
-                                                            { filteredAds.price}
-                                                        </Typography>
-                                                        <Typography variant="subheading" paragraph>
-                                                            { filteredAds.phone}
-                                                        </Typography>
-                                                        <Typography variant="subheading" paragraph>
-                                                            { filteredAds.created_date}
-                                                        </Typography>
-                                                    </CardContent>
-                                                </div>
-                                                <Hidden xsDown>
-                                                    <CardMedia
-                                                    style={{ width: 251,height: 151}}
-                                                    image={`/static/media/${filteredAds.file}`} // eslint-disable-line max-len
-                                                    title="Image title"
-                                                />
-                                                    {/* <img className="Adsimages" src={`/${filteredAds.file}`} /> */}
-                                        {/* </Hidden> */}
-                                        {/* //</Card> */}
+                            <Grid item md={10}>
+                            
+                                {
+                                   
+
+                                      
+                                       
                                         <Grid container>
                                             <Grid item  xs={12} md={8}>
                                                 <Hidden xsDown>
@@ -259,27 +233,30 @@ class AdDetail extends Component {
                                                         {filteredAds.description}
                                                     </Typography>
                                                     <Typography variant="subheading" paragraph>
-                                                        {filteredAds.address}
+                                                    <i class="fas fa-map-marker-alt"></i> {filteredAds.address}
                                                     </Typography>
                                                     <Typography variant="subheading" paragraph>
-                                                        {filteredAds.city}
+                                                    <i class="fas fa-city"></i>  {filteredAds.city}
                                                     </Typography>
 
                                                     <Typography variant="subheading" paragraph>
-                                                        {filteredAds.phone}
+                                                    <i class="fas fa-phone"></i>{filteredAds.phone}
                                                     </Typography>
                                                     <Typography variant="subheading" paragraph>
-                                                        {filteredAds.email}
+                                                    <i class="fas fa-envelope"></i>  {filteredAds.email}
                                                     </Typography>
                                                     <Typography variant="subheading" paragraph>
-                                                        {filteredAds.created_date}
+                                                    <i class="fas fa-calendar-alt"></i>  {filteredAds.created_date}
                                                     </Typography>
                                                 </CardContent>
                                             </Grid>
                                         </Grid>
-                                    </Grid>
+                                    
 
                                 }
+                                </Grid>
+                            <Grid item md={1}>
+                            </Grid>
                             </Grid>
                         /* End sub featured posts */
 

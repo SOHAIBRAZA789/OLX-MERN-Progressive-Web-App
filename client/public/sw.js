@@ -103,7 +103,7 @@
 
 (global => {
   'use strict';
-  importScripts('/node_modules/sw-toolbox/sw-toolbox.js')
+  importScripts('./node_modules/sw-toolbox/sw-toolbox.js')
   // Load the sw-toolbox library.
   // importScripts('/sw-toolbox.js');
 
@@ -128,14 +128,14 @@
     }
   });
 
-  global.toolbox.precache(['/', '/index.html',
-    '/bootstrap/fontawesome/css/all.min.css',
-    '/bootstrap/css/bootstrap.min.css',
+  global.toolbox.precache(['/', '/index.html','/static/js/bundle.js'
+    // '/bootstrap/fontawesome/css/all.min.css',
+    // '/bootstrap/css/bootstrap.min.css',
 
-    '/bootstrap/jquery-3.3.1.slim.min.js',
-    '/bootstrap/popper.min.js',
-    '/bootstrap/js/bootstrap.min.js',
-    '/static/js/bundle.js'
+    // '/bootstrap/jquery-3.3.1.slim.min.js',
+    // '/bootstrap/popper.min.js',
+    // '/bootstrap/js/bootstrap.min.js',
+    // '/static/js/bundle.js'
   ]);
   // By default, all requests that don't match our custom handler will use the
   // toolbox.networkFirst cache strategy, and their responses will be stored in
