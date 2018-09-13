@@ -137,7 +137,7 @@ class AdsList extends React.Component {
     };
 
     render() {
-        console.log('User:', this.state.auth._id);
+        // console.log('User:', this.state.auth._id);
         const { classes } = this.props;
 
         return (

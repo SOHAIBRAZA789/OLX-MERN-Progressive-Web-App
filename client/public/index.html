@@ -38,33 +38,17 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <!-- <script>
-      if ('serviceWorker' in navigator) {
-       
-          navigator.serviceWorker.register('./sw.js').then(function(registration) {
-            // Registration was successful
-            console.log('ServiceWorker registration successful with scope: hello', registration.scope);
-          }, function(err) {
-            // registration failed :(
-            console.log('ServiceWorker registration failed: hello', err);
-          }).catch(function(err) {
-            console.log(err)
-          });
-       
-      } else {
-        console.log('service worker is not supported');
-      }
-    </script> -->
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('./sw.js')
+            .then(function (registration) {
+              console.log('Service worker registered ' + registration.scope);
+            })
+            .catch((err) => {
+              console.log('service worker failed' + err)
+            })
+        }
+      </script> -->
 
   </body>
 </html>
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js')
-      .then(function (registration) {
-        console.log('Service worker registered ' + registration.scope);
-      })
-      .catch((err) => {
-        console.log('service worker failed' + err)
-      })
-  }
-</script>
+
